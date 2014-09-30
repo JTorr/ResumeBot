@@ -16,6 +16,10 @@ gem 'cancancan'
 gem 'figaro'
 gem 'pg'
 gem 'pg_search'
+gem "twitter-bootstrap-rails"
+gem "bootstrap_form"
+gem "httparty"
+gem "font-awesome-rails"
 
 
 group :production do
