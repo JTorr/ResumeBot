@@ -20,6 +20,7 @@ gem "twitter-bootstrap-rails"
 gem "bootstrap_form"
 gem "httparty"
 gem "font-awesome-rails"
+gem "json_resume"
 
 
 group :production do
