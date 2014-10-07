@@ -1,0 +1,40 @@
+%h1 Create Your CV
+%h3 The CV is a comprehensive record of your job history, skills and education.
+%h3 Later, you can choose which pieces to include in your resume.
+
+=form_for @cv do |f|
+
+  .form_group
+    -# =f.label :content, "Item"
+    =f.label :first_name, "First Name"
+    =f.text_field :first_name, class: "form-control"
+    %br
+    =f.label :last_name, "Last Name"
+    =f.text_field :last_name, class: "form-control"
+    %br
+    =f.label :email, "Email"
+    =f.text_field :email, class: "form-control"
+    %br
+    =f.label :phone_1, "Phone 1"
+    =f.text_field :phone_1, class: "form-control"
+    %br
+    =f.label :phone_2, "Phone 2"
+    =f.text_field :phone_2, class: "form-control"
+    %br
+    =f.label :phone_3, "Phone 3"
+    =f.text_field :phone_3, class: "form-control"
+    %br
+    =f.label :address, "Street Address"
+    =f.text_field :address, class: "form-control"
+    %br
+    =f.label :city, "City"
+    =f.text_field :city, class: "form-control"
+    %br
+    //TODO: change this to a drop-down
+    =f.label :state, "State"
+    =f.text_field :state, class: "form-control"
+    %br
+    =f.label :postal_code, "Postal Code"
+    =f.text_field :address, class: "form-control"
+    %br
+    %button{:class => 'btn btn-default'}Create CV
