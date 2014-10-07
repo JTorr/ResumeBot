@@ -10,8 +10,8 @@ feature 'User creates a CV' do
     fill_in 'Address', with: '123 ABC Lane'
     fill_in 'Postal Code', with: '30000'
     fill_in 'City', with: 'Atlanta'
-    #FIXME: change state to drop-down selector
-    fill_in 'State', with: 'GA'
+    select 'MA', from: 'State'
+    
 
     click_button 'Create CV'
 
