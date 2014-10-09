@@ -20,6 +20,15 @@ class ResumesController < ApplicationController
     @resume = resume.find(params[:id])
   end
 
+
+  def edit_master
+    @master = resume.find(id: 1)
+  end
+
+  def update_master
+    @master = resume.find(id: 1)
+  end
+
     private
 
     def resume_params

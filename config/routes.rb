@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   devise_for :users
   get 'static_pages/home'
   root to: "static_pages#home"
+  get '/resumes/master' => 'resumes#show_master'
+  get '/resumes/master/edit' => 'resumes#edit_master'
+  post '/resumes/master/update' => 'resumes#update_master'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
