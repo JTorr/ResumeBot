@@ -1,4 +1,4 @@
 class Education < ActiveRecord::Base
-  validates_presence_of :cv_id, :institution
-  belongs_to :cv
+  validates_presence_of :Resume_id, :institution
+  belongs_to :Resume
 end

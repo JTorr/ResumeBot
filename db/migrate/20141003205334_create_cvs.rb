@@ -1,4 +1,4 @@
-class CreateCvs < ActiveRecord::Migration
+class CreateResumes < ActiveRecord::Migration
   def change
     create_table :cvs do |t|
       t.references :user

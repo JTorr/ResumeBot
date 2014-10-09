@@ -1,8 +1,8 @@
-%h1 Create Your CV
-%h3 The CV is a comprehensive record of your job history, skills and education.
+%h1 Create Your Resume
+%h3 The Resume is a comprehensive record of your job history, skills and education.
 %h3 Later, you can choose which pieces to include in your resume.
 
-=form_for @cv do |f|
+=form_for @resume do |f|
 
   .form_group
     -# =f.label :content, "Item"
@@ -37,4 +37,4 @@
     =f.label :postal_code, "Postal Code"
     =f.text_field :postal_code, class: "form-control"
     %br
-    %button{:class => 'btn btn-default'}Create CV
+    %button{:class => 'btn btn-default'}Create Resume

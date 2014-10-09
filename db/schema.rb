@@ -11,12 +11,39 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141003213321) do
+ActiveRecord::Schema.define(version: 20141009163638) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "cvs", force: true do |t|
+  create_table "educations", force: true do |t|
+    t.integer  "resume_id"
+    t.string   "institution"
+    t.string   "area"
+    t.string   "study_type"
+    t.date     "start_date"
+    t.date     "end_date"
+    t.decimal  "gpa"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "educations", ["Resume_id"], name: "index_educations_on_Resume_id", using: :btree
+
+  create_table "experiences", force: true do |t|
+    t.integer  "resume_id"
+    t.string   "company_name"
+    t.string   "position"
+    t.date     "start_date"
+    t.date     "end_date"
+    t.text     "summary"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "experiences", ["Resume_id"], name: "index_experiences_on_Resume_id", using: :btree
+
+  create_table "resumes", force: true do |t|
     t.integer  "user_id"
     t.string   "email"
     t.string   "first_name"
@@ -32,36 +59,9 @@ ActiveRecord::Schema.define(version: 20141003213321) do
     t.datetime "updated_at"
   end
 
-  create_table "educations", force: true do |t|
-    t.integer  "cv_id"
-    t.string   "institution"
-    t.string   "area"
-    t.string   "study_type"
-    t.date     "start_date"
-    t.date     "end_date"
-    t.decimal  "gpa"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "educations", ["cv_id"], name: "index_educations_on_cv_id", using: :btree
-
-  create_table "experiences", force: true do |t|
-    t.integer  "cv_id"
-    t.string   "company_name"
-    t.string   "position"
-    t.date     "start_date"
-    t.date     "end_date"
-    t.text     "summary"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "experiences", ["cv_id"], name: "index_experiences_on_cv_id", using: :btree
-
   create_table "skills", force: true do |t|
     t.string   "name"
-    t.integer  "cv_id"
+    t.integer  "resume_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

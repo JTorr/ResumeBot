@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :cv do
+  factory :Resume do
     sequence(:email) { |n| "user#{n}@example.com" }
     first_name "Omniscient"
     last_name "Bob"

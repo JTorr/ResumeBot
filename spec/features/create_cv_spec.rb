@@ -1,6 +1,6 @@
-feature 'User creates a CV' do
-  scenario 'they see the CV on the page' do
-    visit new_CV_path
+feature 'User creates a Resume' do
+  scenario 'they see the Resume on the page' do
+    visit new_Resume_path
 
     #TODO: Use Factory Girl here?
     fill_in 'First Name', with: 'Omniscient'
@@ -13,10 +13,10 @@ feature 'User creates a CV' do
     select 'MA', from: 'State'
     
 
-    click_button 'Create CV'
+    click_button 'Create Resume'
 
-    expect(page).to have_css '.cv-name', 'Omniscient'
-    expect(page).to have_css '.cv-last-name', 'Bob'
+    expect(page).to have_css '.Resume-name', 'Omniscient'
+    expect(page).to have_css '.Resume-last-name', 'Bob'
     expect(page).to have_css '.email-1', 'bob@omniscient.com'
     expect(page).to have_css '.phone-1', '404-404-4040'
     expect(page).to have_css '.address', '123 ABC Lane'

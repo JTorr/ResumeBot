@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe CvsController, :type => :controller do
+RSpec.describe ResumesController, :type => :controller do
 
   describe "GET new" do
     it "returns http success" do
