@@ -17,16 +17,16 @@ class ResumesController < ApplicationController
   end
 
   def show
-    @resume = resume.find(params[:id])
+    @resume = current_user.resumes.find(params[:id])
   end
 
 
   def edit_master
-    @master = resume.find(id: 1)
+    @master = current_user.resumes.first
   end
 
   def update_master
-    @master = resume.find(id: 1)
+    @master = current_user.resumes.first
   end
 
     private
