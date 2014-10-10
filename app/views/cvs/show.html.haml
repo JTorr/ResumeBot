@@ -1,0 +1,39 @@
+.col-lg-3
+.well.col-lg-12
+  .well.col-lg-12
+    %h1= @Resume.first_name + " " + @Resume.last_name
+  .well.col-lg-12
+    %h2 Basic Profile Information
+    %p= "-" * 60
+    %h3 Email
+    %p= @Resume.email
+    %h3 Phone 1
+    %p= @Resume.phone_1
+    -if @Resume.phone_2
+      %h3 Phone 2
+      %p= @Resume.phone_2
+    -if @Resume.phone_3
+      %h3 Phone 3
+      %p= @Resume.phone_3
+    %h3 Address
+    %p= @Resume.address
+    %p= @Resume.city + ", " + @Resume.state + " " + @Resume.postal_code.to_s
+    %button{:class => 'btn btn-default'}Update Profile
+  .well.col-lg-12
+    %h2 Skills
+    %p= "-" * 60
+    -unless @Resume.skills.empty?
+      %p= @Resume.skills.map { |skill| skill.name }
+    %button{:class => 'btn btn-default'}Add Skills
+  .well.col-lg-12
+    %h2 Experience
+    %p= "-" * 60
+    -unless @Resume.experiences.empty?
+      %p= @Resume.experiences.map { |exp| exp.company_name }
+    %button{:class => 'btn btn-default'}Add Experience
+  .well.col-lg-12
+    %h2 Education
+    %p= "-" * 60
+    -unless @Resume.educations.empty?
+      %p= @Resume.educations.map { |education| education.institution }
+    %button{:class => 'btn btn-default'}Add Education

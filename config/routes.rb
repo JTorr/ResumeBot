@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'skill/new'
+
+  get 'skill/create'
+
   devise_for :users
   get 'static_pages/home'
   root to: "static_pages#home"
