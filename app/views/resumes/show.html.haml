@@ -1,62 +1,61 @@
-
--# <label class="text_label">This is another text label</label>
--# <div class="edit">edit</div>
--# <input type="text" value="Click The Pencil Icon to Edit Me" style="display: none;">
--# <div class="clear"></div>
-
 .col-lg-3
 .well.col-lg-12
   .well.col-lg-12
+    #draggable.ui-widget-content
+      %p Drag me around
     %h1= @resume.first_name + " " + @resume.last_name
   .well.col-lg-12
     %h2 Basic Profile Information
     %p= "-" * 60
     %h3 Email
     %p.label.text_label.edit= @resume.email
-    -# %p.edit Edit
     %input{:style => "display: none;", :type => "text", :value => "Press enter after update"}
     %h3 Phone 1
-    %p.label.text_label= @resume.phone_1
-    %p.edit Edit
+    %p.label.text_label.edit= @resume.phone_1
     %input{:style => "display: none;", :type => "text", :value => "Press enter after update"}
-    -if @resume.phone_2
+    %br
+    -if @resume.phone_2.empty?
+      %button{:class => 'btn btn-default edit'}Add Phone
+    -else
       %h3 Phone 2
-      %p.label.text_label= @resume.phone_2
-      %p.edit Edit
+      %p.label.text_label.edit= @resume.phone_2
       %input{:style => "display: none;", :type => "text", :value => "Press enter after update"}
-    -if @resume.phone_3
+    %br
+    -if @resume.phone_3.empty?
+      %button{:class => 'btn btn-default edit'}Add Phone
+    -else
       %h3 Phone 3
-      %p.label.text_label= @resume.phone_3
-      %p.edit Edit
+      %p.label.text_label.edit= @resume.phone_3
       %input{:style => "display: none;", :type => "text", :value => "Press enter after update"}
     %h3 Address
-    %p.label.text_label= @resume.address
-    %p.edit Edit
+    %p.label.text_label.edit= @resume.address
     %input{:style => "display: none;", :type => "text", :value => "Press enter after update"}
-    %p.label.text_label= @resume.city
-    %p.edit Edit
+    %p.label.text_label.edit= @resume.city
     %input{:style => "display: none;", :type => "text", :value => "Press enter after update"}
-    %p.label.text_label= @resume.state
-    %p.edit Edit
+    %p.label.text_label.edit= @resume.state
     %input{:style => "display: none;", :type => "text", :value => "Press enter after update"}
-    %p.label.text_label= @resume.postal_code
-    %p.edit Edit
-    %button{:class => 'btn btn-default edit'}Update Profile
+    %p.label.text_label.edit= @resume.postal_code
+    %input{:style => "display: none;", :type => "text", :value => "Press enter after update"}
+    %br
+    %button.btn.btn-default.edit Update Profile
   .well.col-lg-12
     %h2 Skills
     %p= "-" * 60
     -unless @resume.skills.empty?
-      %p= @resume.skills.map { |skill| skill.name }
-    %button{:class => 'btn btn-default'}Add Skills
+      %ul#selectable
+        -skillset = @resume.skills.map { |skill| skill.name }
+        -skillset.each do |skill|
+          %li.ui-widget-content= skill
+    %button.btn.btn-default.add_skill Add Skills
   .well.col-lg-12
     %h2 Experience
     %p= "-" * 60
     -unless @resume.experiences.empty?
       %p= @resume.experiences.map { |exp| exp.company_name }
-    %button{:class => 'btn btn-default'}Add Experience
+    %button.btn.btn-default Add Experience
   .well.col-lg-12
     %h2 Education
     %p= "-" * 60
     -unless @resume.educations.empty?
       %p= @resume.educations.map { |education| education.institution }
-    %button{:class => 'btn btn-default'}Add Education
+    %button.btn.btn-default Add Education

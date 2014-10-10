@@ -21,7 +21,7 @@ gem "bootstrap_form"
 gem "httparty"
 gem "font-awesome-rails"
 gem "json_resume"
-gem 'jeditable-rails'
+gem 'jquery-ui-rails'
 
 
 group :production do
