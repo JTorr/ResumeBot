@@ -29,6 +29,7 @@ class ResumesController < ApplicationController
     @master = current_user.resumes.first
   end
 
+
     private
 
     def resume_params

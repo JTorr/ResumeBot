@@ -1,3 +1,9 @@
+
+-# <label class="text_label">This is another text label</label>
+-# <div class="edit">edit</div>
+-# <input type="text" value="Click The Pencil Icon to Edit Me" style="display: none;">
+-# <div class="clear"></div>
+
 .col-lg-3
 .well.col-lg-12
   .well.col-lg-12
@@ -6,19 +12,36 @@
     %h2 Basic Profile Information
     %p= "-" * 60
     %h3 Email
-    %p= @resume.email
+    %p.label.text_label.edit= @resume.email
+    -# %p.edit Edit
+    %input{:style => "display: none;", :type => "text", :value => "Press enter after update"}
     %h3 Phone 1
-    %p= @resume.phone_1
+    %p.label.text_label= @resume.phone_1
+    %p.edit Edit
+    %input{:style => "display: none;", :type => "text", :value => "Press enter after update"}
     -if @resume.phone_2
       %h3 Phone 2
-      %p= @resume.phone_2
+      %p.label.text_label= @resume.phone_2
+      %p.edit Edit
+      %input{:style => "display: none;", :type => "text", :value => "Press enter after update"}
     -if @resume.phone_3
       %h3 Phone 3
-      %p= @resume.phone_3
+      %p.label.text_label= @resume.phone_3
+      %p.edit Edit
+      %input{:style => "display: none;", :type => "text", :value => "Press enter after update"}
     %h3 Address
-    %p= @resume.address
-    %p= @resume.city + ", " + @resume.state + " " + @resume.postal_code.to_s
-    %button{:class => 'btn btn-default'}Update Profile
+    %p.label.text_label= @resume.address
+    %p.edit Edit
+    %input{:style => "display: none;", :type => "text", :value => "Press enter after update"}
+    %p.label.text_label= @resume.city
+    %p.edit Edit
+    %input{:style => "display: none;", :type => "text", :value => "Press enter after update"}
+    %p.label.text_label= @resume.state
+    %p.edit Edit
+    %input{:style => "display: none;", :type => "text", :value => "Press enter after update"}
+    %p.label.text_label= @resume.postal_code
+    %p.edit Edit
+    %button{:class => 'btn btn-default edit'}Update Profile
   .well.col-lg-12
     %h2 Skills
     %p= "-" * 60
