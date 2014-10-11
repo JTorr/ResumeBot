@@ -40,4 +40,8 @@ $(document).ready(function(){
     $( "#draggable" ).draggable();
   });
 
+  $(function() {
+    $( "#selectable" ).selectable();
+  });
+
 });

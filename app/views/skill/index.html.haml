@@ -1,0 +1,12 @@
+%button.btn.btn-default.add-skill
+  Add New Skill
+
+%form.add-skill-form{ 'data-id' => @resume.id }
+  %input.form-control{ name: 'skill[name]', placeholder: 'Add New Skill' }
+  %input.btn.btn-default{ type: 'submit', value: 'Save' }
+
+%section.skills
+- @resume.skills.each do |skill, skill.name|
+  .well
+    .row
+      skill.name
