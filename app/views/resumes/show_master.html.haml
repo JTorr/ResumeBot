@@ -60,7 +60,7 @@
               %td= skill.name
             %tr
               %td
-                = form_tag skills_path(skill), method: :delete do
+                = form_tag skill_path(skill), method: :delete do
                   = hidden_field_tag :id, skill.id
                   = button_tag(type: 'submit', class: "btn btn-danger") do
                     %i.fa.fa-times

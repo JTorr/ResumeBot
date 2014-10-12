@@ -36,12 +36,12 @@ $(document).ready(function(){
 		  }
 	  });
 
-  $(function() {
-    $( "#draggable" ).draggable();
-  });
-
-  $(function() {
-    $( "#selectable" ).selectable();
-  });
+  // $(function() {
+  //   $( "#draggable" ).draggable();
+  // });
+	//
+  // $(function() {
+  //   $( "#selectable" ).selectable();
+  // });
 
 });

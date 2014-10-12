@@ -14,6 +14,13 @@ class SkillsController < ApplicationController
     end
   end
 
+  def destroy
+    @resume = Resume.find(params[:id])
+    @skill = @resume.skills.find(params[:id])
+    @skill.destroy
+    redirect_to resume_path(@resume)
+  end
+
   def index
     @resume = current_user.resumes.find(params[:id])
     @skills = @resume.skills.all

@@ -20,13 +20,16 @@ class ResumesController < ApplicationController
     @resume = current_user.resumes.find(params[:id])
   end
 
+  def show_master
+    @resume = current_user.resumes.where(master: true).first
+  end
 
   def edit_master
-    @master = current_user.resumes.first
+    @master = current_user.resumes.where(master: true).first
   end
 
   def update_master
-    @master = current_user.resumes.first
+    @master = current_user.resumes.where(master: true).first
   end
 
 
