@@ -9,6 +9,7 @@
     %h2 Basic Profile Information
     %p= "-" * 60
 
+    -# - form_for [@resume, @email] do |form|
     %h3 Email
     %p.label.text_label.edit= @resume.email
     %input{:style => "display: none;", :type => "text", :value => "Press enter after update"}
@@ -44,7 +45,7 @@
     %input{:style => "display: none;", :type => "text", :value => "Press enter after update"}
     %br
 
-    %button.btn.btn-default.edit Update Profile
+    %button.btn.btn-default.submit Update Profile
 
 
 
@@ -53,9 +54,18 @@
     %p= "-" * 60
     -unless @resume.skills.empty?
       %ul#selectable
-        -skillset = @resume.skills.map { |skill| skill.name }
-        -skillset.each do |skill|
-          %li.ui-widget-content= skill
+        //FIXME: combine both map functions into one?
+
+        %li.ui-widget-content
+          %td
+          -skillnames = @resume.skills.map { |skill| skill.name }
+          -skillnames.each do |name|
+            = name
+          -@resume.skills.each do |skill|
+            = form_tag resume_skills_path(skill.id), method: :delete do
+              = hidden_field_tag :id, skill.id
+              = button_tag(type: 'submit', class: "btn btn-danger") do
+                %i.fa.fa-times
     %button.btn.btn-default.add_skill Add Skills
   .well.col-lg-12
     %h2 Experience

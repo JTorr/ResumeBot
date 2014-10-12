@@ -1,12 +1,11 @@
 class SkillsController < ApplicationController
   def new
-    @resume = current_user.resumes.find(params[:id])
-    @skill = @resume.skills.new
+    @skill = current_user.skills.new
   end
 
   def create
-    @resume = current_user.resumes.find(params[:id])
-    @skill = @resume.create(skill_params)
+    @resume = Resume.find(params[:id])
+    @skill = current_user.skills.create(skill_params)
     if @skill.save
       redirect_to @resume, notice: "Skill added."
     else
