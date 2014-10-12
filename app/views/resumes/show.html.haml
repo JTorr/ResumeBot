@@ -53,29 +53,28 @@
     %h2 Skills
     %p= "-" * 60
     -unless @resume.skills.empty?
-      %ul#selectable
-        //FIXME: combine both map functions into one?
-
-        %li.ui-widget-content
-          %td
-          -skillnames = @resume.skills.map { |skill| skill.name }
-          -skillnames.each do |name|
-            = name
+      %table
+        %tbody
           -@resume.skills.each do |skill|
-            = form_tag resume_skills_path(skill.id), method: :delete do
-              = hidden_field_tag :id, skill.id
-              = button_tag(type: 'submit', class: "btn btn-danger") do
-                %i.fa.fa-times
-    %button.btn.btn-default.add_skill Add Skills
-  .well.col-lg-12
-    %h2 Experience
-    %p= "-" * 60
-    -unless @resume.experiences.empty?
-      %p= @resume.experiences.map { |exp| exp.company_name }
-    %button.btn.btn-default Add Experience
-  .well.col-lg-12
-    %h2 Education
-    %p= "-" * 60
-    -unless @resume.educations.empty?
-      %p= @resume.educations.map { |education| education.institution }
-    %button.btn.btn-default Add Education
+            %tr
+              %td= skill.name
+            %tr
+              %td
+                = form_tag skills_path(skill), method: :delete do
+                  = hidden_field_tag :id, skill.id
+                  = button_tag(type: 'submit', class: "btn btn-danger") do
+                    %i.fa.fa-times
+              %tr
+  -#   %button.btn.btn-default.add_skill Add Skills
+  -# .well.col-lg-12
+  -#   %h2 Experience
+  -#   %p= "-" * 60
+  -#   -unless @resume.experiences.empty?
+  -#     %p= @resume.experiences.map { |exp| exp.company_name }
+  -#   %button.btn.btn-default Add Experience
+  -# .well.col-lg-12
+  -#   %h2 Education
+  -#   %p= "-" * 60
+  -#   -unless @resume.educations.empty?
+  -#     %p= @resume.educations.map { |education| education.institution }
+  -#   %button.btn.btn-default Add Education
