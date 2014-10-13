@@ -1,5 +1,6 @@
 class ResumesController < ApplicationController
   def new
+    @master = current_user.resumes.where(master: true).first
     @resume = current_user.resumes.new
   end
 
@@ -11,6 +12,10 @@ class ResumesController < ApplicationController
       flash[:danger] = "Resume could not be saved."
       render :new
     end
+  end
+
+  def select_skills
+    Skill.update_all(["completed_at=?", Time.now], :id => params[:skill_ids])
   end
 
   def index
@@ -36,6 +41,6 @@ class ResumesController < ApplicationController
     private
 
     def resume_params
-      params.require(:resume).permit(:email, :user_id, :first_name, :last_name, :phone_1, :phone_2, :phone_3, :address, :postal_code, :city, :state)
+      params.require(:resume).permit(:email, :first_name, :last_name, :phone_1, :phone_2, :phone_3, :address, :postal_code, :city, :state)
     end
 end

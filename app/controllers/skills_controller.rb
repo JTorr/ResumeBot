@@ -15,16 +15,19 @@ class SkillsController < ApplicationController
   end
 
   def destroy
-    @resume = Resume.find(params[:id])
-    @skill = @resume.skills.find(params[:id])
+    @skill = Skill.find(params[:id])
     @skill.destroy
-    redirect_to resume_path(@resume)
+    redirect_to :back
   end
 
   def index
     @resume = current_user.resumes.find(params[:id])
     @skills = @resume.skills.all
   end
+
+  # def select_skills
+  #   Skill.update_all(["completed_at=?", Time.now], :id => params[:skill_ids])
+  # end
 
   private
 

@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
 
+  get 'jobs/index'
+
+  get 'jobs/show'
+
+  get 'jobs/new'
+
+  get 'jobs/create'
+
   get 'skill/new'
 
   get 'skill/create'
@@ -10,6 +18,13 @@ Rails.application.routes.draw do
   get '/resumes/master' => 'resumes#show_master'
   get '/resumes/master/edit' => 'resumes#edit_master'
   post '/resumes/master/update' => 'resumes#update_master'
+  post '/resumes/create' => 'resumes#select_skills'
+
+  # resources :skills do
+  #   collection do
+  #     put 'select'
+  #   end
+  # end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -39,6 +54,7 @@ Rails.application.routes.draw do
   #       post 'toggle'
   #     end
   #
+
   #     collection do
   #       get 'sold'
   #     end
