@@ -1,7 +1,7 @@
 %h1 Choose Elements to Add to Your Resume
 
 %h3 Skills
-=form_tag resumes_create_path, :method => :put do
+=form_tag resumes_create_path, :method => :post do
   %ul
     - for skill in @master.skills
       %li

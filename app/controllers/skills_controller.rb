@@ -1,6 +1,7 @@
 class SkillsController < ApplicationController
   def new
-    @skill = current_user.skills.new
+    @master = current_user.resumes.where(master: true).first
+    @skill = @master.skills.new
   end
 
   def create

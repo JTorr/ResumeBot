@@ -1,1 +1,24 @@
-%h1 Show Resume
+.col-lg-3
+.well.col-lg-12
+  .well.col-lg-12
+    -# #draggable.ui-widget-content
+      -# %p Drag me around
+    %h1= @resume.first_name + " " + @resume.last_name
+
+
+  .well.col-lg-12
+    %h2 Skills
+    %p= "-" * 60
+    -unless @resume.skills.empty?
+      %table
+        %tbody
+          -@resume.skills.each do |skill|
+            %tr
+              %td= skill.name
+            %tr
+              %td
+                = form_tag skill_path(skill), method: :delete do
+                  = hidden_field_tag :id, skill.id
+                  = button_tag(type: 'submit', class: "btn btn-danger") do
+                    %i.fa.fa-times
+              %tr

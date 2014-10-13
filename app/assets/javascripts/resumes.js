@@ -12,11 +12,6 @@ $(document).ready(function(){
 
 		}
 
-
-		// else{
-		// 	 $(this).prev().html(this.value);
-		// }
-
 		$(this).hide();
 		$(this).prev().show();
 	});
@@ -39,7 +34,7 @@ $(document).ready(function(){
 							address : $('.address').text(),
 							city : $('.city').text(),
 							state : $('.state').text(),
-							postal_code : $('.postal_code').text()
+							postal_code : $('.postal_code').text(),
 						}
 				});
 

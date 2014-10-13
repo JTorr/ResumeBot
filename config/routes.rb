@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   get '/resumes/master' => 'resumes#show_master'
   get '/resumes/master/edit' => 'resumes#edit_master'
   put '/resumes/master/update' => 'resumes#update_master'
-  post '/resumes/create' => 'resumes#select_skills'
+  post '/resumes/create' => 'resumes#create'
 
   # resources :skills do
   #   collection do

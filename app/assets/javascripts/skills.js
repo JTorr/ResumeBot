@@ -1,35 +1,33 @@
+$(document).ready(function(){
 
-$(function() {
-  // -- Skills -----
-  var skillForm = $('.add-skill-form')
-  , id = skillForm.data('id');
-
-  skillForm.hide();
-
-  $('.add-skill').click(function() {
-    skillForm.slideToggle();
+  $('.add-skill').click(function(){
+    // console.log($(this));
+    $(this).prev().show();
+    $(this).prev().select();
   });
 
-  skillForm.submit(function(e) {
-    // Alternative to returning `false`
-    e.preventDefault();
+  $('input[type="text"]').blur(function() {
+    if ($.trim(this.value) == ''){
+      this.value = (this.defaultValue ? this.defaultValue : '')
+    }
 
-    console.log('Serialized data is', skillForm.serialize());
-
-    $.ajax('/resumes/' + id + '/skill', {
-      type: 'POST',
-      data: skillForm.serialize(),
-      success: function(skill) {
-        console.log(skill);
-        $('.skills').prepend( $( skill.name ) );
-      },
-      error: function(response) {
-        // FIXME: get errors from response
-        console.log(response);
-        alert('Error was: ' + response.errors);
-      }
-    });
-
-    skillForm.slideToggle();
+    $(this).hide();
+    $(this).prev().show();
   });
+
+
+
+  $('input[type="text"]').keypress(function(event) {
+    if (event.keyCode == '13') {
+      $(this).prev().html(this.value);
+      $.ajax('/resumes/master/update', {
+        type: 'PUT',
+        data: $('.new_skill').text(),
+      });
+    }
+  });
+
+
+
+
 });

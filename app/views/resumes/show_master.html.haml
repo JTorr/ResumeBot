@@ -65,7 +65,17 @@
                   = button_tag(type: 'submit', class: "btn btn-danger") do
                     %i.fa.fa-times
               %tr
-  -#   %button.btn.btn-default.add_skill Add Skills
+    -# %p.label.text_label.edit.new_skill Add New Skill
+
+    %br
+    -# %button.btn.btn-default.add_skill Add Skills
+    -# = form_tag new_skill_path, method: :get do
+    -# = button_tag(type: 'submit', class: "btn btn-default add-skill") do
+    -#   Add Skills
+    %input{:style => "display: none;", :type => "text", :value => "Press enter after update", class: "new-skill"}
+    = button_tag(type: 'submit', class: "btn btn-default add-skill") do
+      Add Skills
+
   -# .well.col-lg-12
   -#   %h2 Experience
   -#   %p= "-" * 60

@@ -5,7 +5,11 @@ class ResumesController < ApplicationController
   end
 
   def create
-    @resume = current_user.resumes.create(resume_params)
+    @master = current_user.resumes.where(master: true).first
+    @resume = @master.clone
+    @resume.update_attributes new_resume_params
+    @resume.save
+
     if @resume.save
       redirect_to @resume, notice: "Successful"
     else
@@ -36,7 +40,7 @@ class ResumesController < ApplicationController
   def update_master
     # binding.pry
     @master = current_user.resumes.where(master: true).first
-    if @master.update_attributes(update_master_params)
+    if @master.update_attributes(params[update_master_params])
       render :show
     else
       flash[:danger] = "Resume could not be saved."
@@ -46,7 +50,7 @@ class ResumesController < ApplicationController
 
   def update
     @resume = Resume.find params[:id]
-    if @resume.update update_params
+    if @resume.update
       render :show
     else
       render_invalid @resume
@@ -55,11 +59,12 @@ class ResumesController < ApplicationController
 
     private
 
-    def update_master_params
-      params.permit(:email, :phone_1, :phone_2, :phone_3, :address, :postal_code, :city, :state)
+    def new_resume_params
+      params.permit(:email, :phone_1, :phone_2, :phone_3, :address, :postal_code, :city, :state, skills: [])
     end
 
     def resume_params
-      params.require(:resume).permit(:email, :first_name, :last_name, :phone_1, :phone_2, :phone_3, :address, :postal_code, :city, :state)
+      params.permit([:skills])
     end
+
 end
