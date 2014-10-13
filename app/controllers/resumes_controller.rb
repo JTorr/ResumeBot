@@ -6,8 +6,15 @@ class ResumesController < ApplicationController
 
   def create
     @master = current_user.resumes.where(master: true).first
-    @resume = @master.clone
-    @resume.update_attributes new_resume_params
+    @skills = params["skill_ids"].to_a
+    @new_atts = @master.attributes.merge(skills: @skills)
+    @new_atts.delete(:id, :master)
+    binding.pry
+
+    @resume = current_user.resumes.new(@new_atts)
+    last_id = Resume.last.id
+    @resume.update_attributes(id: last_id + 1)
+    # binding.pry
     @resume.save
 
     if @resume.save
@@ -17,10 +24,6 @@ class ResumesController < ApplicationController
       render :new
     end
   end
-  #
-  # def select_skills
-  #   Skill.update_all(["completed_at=?", Time.now], :id => params[:skill_ids])
-  # end
 
   def index
   end
@@ -64,7 +67,7 @@ class ResumesController < ApplicationController
     end
 
     def resume_params
-      params.permit([:skills])
+      params.permit(skills: :skill_ids)
     end
 
 end
