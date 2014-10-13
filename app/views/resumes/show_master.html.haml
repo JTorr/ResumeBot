@@ -11,11 +11,11 @@
 
     -# - form_for [@resume, @email] do |form|
     %h3 Email
-    %p.label.text_label.edit= @resume.email
+    %p.label.text_label.edit.email= @resume.email
     %input{:style => "display: none;", :type => "text", :value => "Press enter after update"}
 
     %h3 Phone 1
-    %p.label.text_label.edit= @resume.phone_1
+    %p.label.text_label.edit.phone_1= @resume.phone_1
     %input{:style => "display: none;", :type => "text", :value => "Press enter after update"}
     %br
 
@@ -23,7 +23,7 @@
       %button.btn.btn-default.edit Add Phone
     -else
       %h3 Phone 2
-      %p.label.text_label.edit= @resume.phone_2
+      %p.label.text_label.edit.phone_2= @resume.phone_2
       %input{:style => "display: none;", :type => "text", :value => "Press enter after update"}
     %br
 
@@ -31,21 +31,21 @@
       %button.btn.btn-default.edit Add Phone
     -else
       %h3 Phone 3
-      %p.label.text_label.edit= @resume.phone_3
+      %p.label.text_label.edit.phone_3= @resume.phone_3
       %input{:style => "display: none;", :type => "text", :value => "Press enter after update"}
 
     %h3 Address
-    %p.label.text_label.edit= @resume.address
+    %p.label.text_label.edit.address= @resume.address
     %input{:style => "display: none;", :type => "text", :value => "Press enter after update"}
-    %p.label.text_label.edit= @resume.city
+    %p.label.text_label.edit.city= @resume.city
     %input{:style => "display: none;", :type => "text", :value => "Press enter after update"}
-    %p.label.text_label.edit= @resume.state
+    %p.label.text_label.edit.state= @resume.state
     %input{:style => "display: none;", :type => "text", :value => "Press enter after update"}
-    %p.label.text_label.edit= @resume.postal_code
+    %p.label.text_label.edit.postal_code= @resume.postal_code
     %input{:style => "display: none;", :type => "text", :value => "Press enter after update"}
     %br
 
-    %button.btn.btn-default.submit Update Profile
+    -# %button.btn.btn-default.submit Update Profile
 
 
 

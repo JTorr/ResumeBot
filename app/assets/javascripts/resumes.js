@@ -8,11 +8,14 @@ $(document).ready(function(){
 
 	$('input[type="text"]').blur(function() {
 		if ($.trim(this.value) == ''){
-			this.value = (this.defaultValue ? this.defaultValue : '');
+			this.value = (this.defaultValue ? this.defaultValue : '')
+
 		}
-		else{
-			$(this).prev().html(this.value);
-		}
+
+
+		// else{
+		// 	 $(this).prev().html(this.value);
+		// }
 
 		$(this).hide();
 		$(this).prev().show();
@@ -23,15 +26,30 @@ $(document).ready(function(){
 			if ($.trim(this.value) == ''){
 				this.value = (this.defaultValue ? this.defaultValue : '');
 			}
-			else
-				{
-					$(this).prev().html(this.value);
-				}
+			else {
+				$(this).prev().html(this.value);
+				console.log($('.email').val());
+				$.ajax('/resumes/master/update', {
+						type: 'PUT',
+						data:  {
+							email: $(".email").text(),
+							phone_1 : $('.phone_1').text(),
+							phone_2 : $('.phone_2').text(),
+							phone_3 : $('.phone_3').text(),
+							address : $('.address').text(),
+							city : $('.city').text(),
+							state : $('.state').text(),
+							postal_code : $('.postal_code').text()
+						}
+				});
+
 
 				$(this).hide();
 				$(this).prev().show();
-			}
-		});
+			};
+    }
+
+
 
 		// $(function() {
 		//   $( "#draggable" ).draggable();
@@ -42,3 +60,4 @@ $(document).ready(function(){
 		// });
 
 	});
+});

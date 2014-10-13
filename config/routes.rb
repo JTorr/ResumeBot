@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   root to: "static_pages#home"
   get '/resumes/master' => 'resumes#show_master'
   get '/resumes/master/edit' => 'resumes#edit_master'
-  post '/resumes/master/update' => 'resumes#update_master'
+  put '/resumes/master/update' => 'resumes#update_master'
   post '/resumes/create' => 'resumes#select_skills'
 
   # resources :skills do
