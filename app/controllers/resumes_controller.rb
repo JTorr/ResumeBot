@@ -54,7 +54,7 @@ class ResumesController < ApplicationController
 
   def show_master
     @master = master_resume
-    @skills = @master.resume_skills || []
+    @skills = @master.skills || []
     unless @master
       redirect_to welcome_path
     end

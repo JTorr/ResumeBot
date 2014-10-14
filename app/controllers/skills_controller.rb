@@ -8,7 +8,7 @@ class SkillsController < ApplicationController
     # @master = current_user.resumes.where(master: true).first
     @skill = Skill.create(name: new_skill_params)
     if @skill.save
-      binding.pry
+      # binding.pry
       master_resume.skills << @skill
       redirect_to :back, notice: "Skill added."
     else
