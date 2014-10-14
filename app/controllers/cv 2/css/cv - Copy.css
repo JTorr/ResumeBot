@@ -1,0 +1,64 @@
+body {
+  color: #333;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  background-color: #333;
+}
+
+/* Custom container */
+
+
+
+/* Portrait tablet to landscape and desktop */
+@media (min-width: 930px) { 
+
+  .container-main { margin: 0 auto;  width: 940px;  background-color: #fff;   border: 1px solid #ddd;}
+  .container-head {padding:40px;background-image: url("../img/bg.png");}
+  .container-body {padding:40px;padding-top:10px;}
+  .inner-seperator {margin:10px 0 20px 0; border-bottom: 1px solid #ddd;}
+  .inner-seperator-borderless {margin:10px 0 20px 0;}
+
+  .c-header {margin-bottom1: 60px; }
+  .c-header .c-photo {margin-left:50px;}  
+  .c-header .c-info {margin-left:40px; margin-top:40px;}  
+  .c-header .c-info .c-name {font-size: 36px; margin-bottom:10px;}  
+  .c-header .c-info .c-title {font-size: 18px; font-style: italic; }
+  .c-header .c-contact {margin-left:40px;}      
+
+  .c-line {margin-bottom:1px;}
+  .c-section {margin-top:30px; padding-bottom:30px;}
+  .c-section .c-caption {font-size: 20px; width:160px; font-style: italic;}
+  .c-section .c-body {width:670px; float: right;} 
+
+  .c-body .c-title-cont {margin-bottom:10px;}
+  .c-body .c-title-cont .c-title-name {width: 550px;}
+  .c-body .c-title-cont .c-title-name .c-title-name-desc { width:680px;margin-bottom1:2px; font-size: 18px; color: #2e4dbf;}
+  .c-body .c-title-cont .c-title-name .c-title-name-sub { width:680px;font-size:16px; font-style: italic;}
+  .c-body .c-title-cont .c-title-period {border: 1px solid #ddd; font-size: 12px; padding:2px 5px 2px 5px;}
+  .c-desc-cont ul {margin-left:17px;}
+  .c-title-text {font-size: 18px; color: #2e4dbf; margin-bottom:10px;}
+  .c-body .c-title-cont .c-title-name .c-title-name-desc { width:680px;margin-bottom1:2px; font-size: 18px; color: #2e4dbf;}
+
+  .c-border {border:1px solid #ddd; }
+  .hide {display:none;}
+  .seperator {border-bottom: 1px solid #ddd;}
+  .c-seperator-line {border-bottom: 0px solid #eee; margin: 2px 0 2px 0;}
+}
+ 
+/* Landscape phone to portrait tablet */
+@media (max-width: 767px) {  }
+ 
+/* Landscape phones and down */
+@media (max-width: 480px) { 
+  .container-main { margin: 0 auto;  width: 480px;  background-color: #fff;   border: 1px solid #ddd;}
+  .c-section .c-caption {font-size: 20px; width:60px; font-style: italic;}
+  .c-section .c-body {width:470px; float: right;} 
+  .c-body .c-title-cont .c-title-name .c-title-name-desc {width:380px;}
+  .c-body .c-title-cont .c-title-name .c-title-name-sub {width:380px;}
+}
+
+
+.c-border {border:1px solid #ddd; }
+.hide {display:none;}
+.seperator {border-bottom: 1px solid #ddd;}
+.c-seperator-line {border-bottom: 0px solid #eee; margin: 2px 0 2px 0;}

@@ -1,7 +1,7 @@
 .col-lg-3
 .well.col-lg-12
   .well.col-lg-12
-    %h1= @master.first_name + " " + @master.last_name
+    %h1.center= @master.first_name + " " + @master.last_name
 
   .well.col-lg-12
     %h2 Basic Profile Information
@@ -10,10 +10,11 @@
     %h3 Email
     %p.label.text_label.edit.email= @master.email
     %input.profile{:style => "display: none;", :type => "text", :value => "Press enter after update"}
+    %br
 
     %h3 Phone 1
     %p.label.text_label.edit.phone_1= @master.phone_1
-    %input{:style => "display: none;", :type => "text", :value => "Press enter after update"}
+    %input.profile{:style => "display: none;", :type => "text", :value => "Press enter after update"}
     %br
 
     -if @master.phone_2.empty?
@@ -21,7 +22,7 @@
     -else
       %h3 Phone 2
       %p.label.text_label.edit.phone_2= @master.phone_2
-      %input{:style => "display: none;", :type => "text", :value => "Press enter after update"}
+      %input.profile{:style => "display: none;", :type => "text", :value => "Press enter after update"}
     %br
 
     -if @master.phone_3.empty?
@@ -29,17 +30,17 @@
     -else
       %h3 Phone 3
       %p.label.text_label.edit.phone_3= @master.phone_3
-      %input{:style => "display: none;", :type => "text", :value => "Press enter after update"}
+      %input.profile{:style => "display: none;", :type => "text", :value => "Press enter after update"}
 
     %h3 Address
     %p.label.text_label.edit.address= @master.address
-    %input{:style => "display: none;", :type => "text", :value => "Press enter after update"}
+    %input.profile{:style => "display: none;", :type => "text", :value => "Press enter after update"}
     %p.label.text_label.edit.city= @master.city
-    %input{:style => "display: none;", :type => "text", :value => "Press enter after update"}
+    %input.profile{:style => "display: none;", :type => "text", :value => "Press enter after update"}
     %p.label.text_label.edit.state= @master.state
-    %input{:style => "display: none;", :type => "text", :value => "Press enter after update"}
+    %input.profile{:style => "display: none;", :type => "text", :value => "Press enter after update"}
     %p.label.text_label.edit.postal_code= @master.postal_code
-    %input{:style => "display: none;", :type => "text", :value => "Press enter after update"}
+    %input.profile{:style => "display: none;", :type => "text", :value => "Press enter after update"}
     %br
 
 

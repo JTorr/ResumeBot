@@ -3,6 +3,33 @@
   font-size: 1em;
 }
 
+.center{
+  text-align: center;
+
+}
+
+.left-aside{
+  /*background-color: white;*/
+  text-align: center;
+  float: left;
+}
+
+.skill{
+  font-size: 1.5em;
+}
+
+
+.right-aside{
+  text-align: center;
+  float: right;
+}
+
+
+
+.contact{
+  /*background-color: gray;*/
+/*}*/
+
 /**#feedback { font-size: 1.4em; }
 #selectable .ui-selecting { background: #FECA40; }
 #selectable .ui-selected { background: #F39814; color: white; }

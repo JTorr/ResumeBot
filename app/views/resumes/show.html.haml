@@ -1,24 +1,23 @@
-.col-lg-3
 .well.col-lg-12
-  .well.col-lg-12
-    -# #draggable.ui-widget-content
-      -# %p Drag me around
-    %h1= @resume.first_name + " " + @resume.last_name
+  .row
+    .col-lg-3.left-aside
+      //TODO: if @resume.phone_2, etc.
+      %p=@resume.address
+      %p=@resume.city + ", " + @resume.state + " " + @resume.postal_code.to_s
+      %p=@resume.email
+    .col-lg-6
+      %h1.center= @resume.first_name + " " + @resume.last_name
+    .col-lg-3.right-side
+      %p=@resume.phone_1
+      %p=@resume.phone_2
+      %p=@resume.phone_3
 
+  %p= "-" * 220
 
   .well.col-lg-12
-    %h2 Skills
-    %p= "-" * 60
+    %h3 Skills
     -unless @resume.skills.empty?
-      %table
-        %tbody
-          -@resume.skills.each do |skill|
-            %tr
-              %td= skill.name
-            %tr
-              %td
-                = form_tag skill_path(skill), method: :delete do
-                  = hidden_field_tag :id, skill.id
-                  = button_tag(type: 'submit', class: "btn btn-danger") do
-                    %i.fa.fa-times
-              %tr
+      %ul
+        -@resume.skills.each do |skill|
+          %li.skill= skill.name
+      %ul

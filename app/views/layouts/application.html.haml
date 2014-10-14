@@ -21,6 +21,8 @@
         %ul.nav.navbar-nav.pull-right
           -if current_user
             %li= link_to "Master Resume", master_path
+            %li= link_to "New Resume", new_resume_path
+            %li= link_to "My Resumes", resumes_path
           %li.dropdown
             %a.btn-btn-default.dropdown-toggle{id:"dropdownMenu1", "data-toggle"=> 'dropdown'}
               Profile Options
