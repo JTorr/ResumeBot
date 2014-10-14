@@ -65,13 +65,14 @@ class ResumesController < ApplicationController
   end
 
   def update_master
-    # binding.pry
     @master = current_user.resumes.where(master: true).first
-    if @master.update_attributes(params[update_master_params])
-      render :show
+    @master.update_attributes new_resume_params
+    if @master.save
+      binding.pry
+      render :show_master
     else
       flash[:danger] = "Resume could not be saved."
-      render :show
+      render :show_master
     end
   end
 
@@ -89,6 +90,7 @@ class ResumesController < ApplicationController
     def new_master_params
       params.permit(:first_name, :last_name, :email, :phone_1, :phone_2, :phone_3, :address, :postal_code, :city, :state)
     end
+
 
     def new_resume_params
       params.permit(:email, :phone_1, :phone_2, :phone_3, :address, :postal_code, :city, :state, skills: [])

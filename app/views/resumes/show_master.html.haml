@@ -60,16 +60,18 @@
                   = button_tag(type: 'submit', class: "btn btn-danger") do
                     %i.fa.fa-times
               %tr
-    -# %p.label.text_label.edit.new_skill Add New Skill
 
     %br
-    -# %button.btn.btn-default.add_skill Add Skills
-    -# = form_tag new_skill_path, method: :get do
-    -# = button_tag(type: 'submit', class: "btn btn-default add-skill") do
-    -#   Add Skills
     %input{:style => "display: none;", :type => "text", :value => "Press enter after update", class: "new-skill"}
-    = button_tag(type: 'submit', class: "btn btn-default add-skill") do
-      Add Skills
+    %br
+    = form_tag new_skill_path, method: :get do
+      = button_tag(type: 'submit', class: "btn btn-default add-skill") do
+        Add Skills
+
+    -# %h3 Phone 1
+    %p.label.text_label.edit.phone_1 Add New Skill
+    %input{:style => "display: none;", :type => "text", :value => "Press enter after update"}
+    %br
 
   -# .well.col-lg-12
   -#   %h2 Experience

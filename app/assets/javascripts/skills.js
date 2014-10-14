@@ -2,8 +2,8 @@ $(document).ready(function(){
 
   $('.add-skill').click(function(){
     // console.log($(this));
-    $(this).prev().show();
-    $(this).prev().select();
+    $(this).prev().prev().prev().show();
+    $(this).prev().prev().prev().select();
   });
 
   $('input[type="text"]').blur(function() {
@@ -12,7 +12,7 @@ $(document).ready(function(){
     }
 
     $(this).hide();
-    $(this).prev().show();
+    $(this).prev().prev().prev().show();
   });
 
 
@@ -20,11 +20,14 @@ $(document).ready(function(){
   $('input[type="text"]').keypress(function(event) {
     if (event.keyCode == '13') {
       $(this).prev().html(this.value);
+      console.log($(this));
       $.ajax('/resumes/master/update', {
         type: 'PUT',
         data: $('.new_skill').text(),
       });
     }
+    // $('td').last().append('.new_skill').text();
+    $(this).prev().prev().prev().show();
   });
 
 
