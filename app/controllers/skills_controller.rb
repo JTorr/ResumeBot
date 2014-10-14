@@ -1,17 +1,19 @@
 class SkillsController < ApplicationController
   def new
-    @master = current_user.resumes.where(master: true).first
+    @master = master_resume
     @skill = @master.skills.new
   end
 
   def create
-    @resume = Resume.find(params[:id])
-    @skill = current_user.skills.create(skill_params)
+    # @master = current_user.resumes.where(master: true).first
+    @skill = Skill.create(name: new_skill_params)
     if @skill.save
-      redirect_to @resume, notice: "Skill added."
+      binding.pry
+      master_resume.skills << @skill
+      redirect_to :back, notice: "Skill added."
     else
       flash[:danger] = "Skill could not be saved."
-      render :new
+      redirect_to :back
     end
   end
 
@@ -26,11 +28,11 @@ class SkillsController < ApplicationController
     @skills = @resume.skills.all
   end
 
-  # def select_skills
-  #   Skill.update_all(["completed_at=?", Time.now], :id => params[:skill_ids])
-  # end
-
   private
+
+    def new_skill_params
+      params.require(:name)
+    end
 
     def skill_params
       params.require(:skill).permit(:name)

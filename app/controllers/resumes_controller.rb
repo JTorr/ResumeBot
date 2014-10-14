@@ -3,7 +3,7 @@ class ResumesController < ApplicationController
     if current_user.resumes.where(master: true).empty?
       redirect_to :welcome
     else
-      @master = current_user.resumes.where(master: true).first
+      @master = master_resume
       @resume = current_user.resumes.new
     end
   end
@@ -25,7 +25,7 @@ class ResumesController < ApplicationController
   end
 
   def create
-    @master = current_user.resumes.where(master: true).first
+    @master = master_resume
     @skills = params["skill_ids"].to_a
     @new_atts = @master.attributes.merge(skills: @skills)
     @new_atts.delete(:id, :master)
@@ -53,7 +53,7 @@ class ResumesController < ApplicationController
   end
 
   def show_master
-    @master = current_user.resumes.where(master: true).first
+    @master = master_resume
     @skills = @master.resume_skills || []
     unless @master
       redirect_to welcome_path
@@ -61,19 +61,14 @@ class ResumesController < ApplicationController
   end
 
   def edit_master
-    @master = current_user.resumes.where(master: true).first
+    @master = master_resume
   end
 
   def update_master
-    @master = current_user.resumes.where(master: true).first
+    @master = master_resume
     @master.update_attributes new_resume_params
-    if @master.save
-      binding.pry
-      render :show_master
-    else
-      flash[:danger] = "Resume could not be saved."
-      render :show_master
-    end
+    @master.save!
+    head :ok
   end
 
   def update

@@ -11,19 +11,22 @@ $(document).ready(function(){
       this.value = (this.defaultValue ? this.defaultValue : '')
     }
 
+    console.log($(this));
     $(this).hide();
     $(this).prev().prev().prev().show();
   });
 
 
 
-  $('input[type="text"]').keypress(function(event) {
+  $('input[type="text"].new_skill').keypress(function(event) {
     if (event.keyCode == '13') {
       $(this).prev().html(this.value);
       console.log($(this));
-      $.ajax('/resumes/master/update', {
+      $.ajax('/skills/new', {
         type: 'PUT',
-        data: $('.new_skill').text(),
+        data:  {
+          name: $('.new_skill').text(),
+        }
       });
     }
     // $('td').last().append('.new_skill').text();

@@ -10,7 +10,6 @@ Rails.application.routes.draw do
 
   get 'skill/new'
 
-  get 'skill/create'
 
   devise_for :users
   get 'static_pages/home'
@@ -21,6 +20,7 @@ Rails.application.routes.draw do
   get '/resumes/master/edit' => 'resumes#edit_master'
   put '/resumes/master/update' => 'resumes#update_master'
   post '/resumes/create' => 'resumes#create'
+  post '/skills/create' => 'skills#create'
 
   # resources :skills do
   #   collection do

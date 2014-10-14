@@ -6,18 +6,19 @@ $(document).ready(function(){
 		$(this).next().select();
 	});
 
-	// $('input[type="text"]').blur(function() {
-	// 	if ($.trim(this.value) == ''){
-	// 		this.value = (this.defaultValue ? this.defaultValue : '')
-	//
-	// 	}
-	//
-	// 	$(this).hide();
-	// 	$(this).prev().show();
-	// });
+	$('input[type="text"]').blur(function() {
+		if ($.trim(this.value) == ''){
+			this.value = (this.defaultValue ? this.defaultValue : '')
 
-	$('input[type="text"]').keypress(function(event) {
+		}
+
+		$(this).hide();
+		$(this).prev().show();
+	});
+
+	$('input[type="text"].profile').keypress(function(event) {
 		if (event.keyCode == '13') {
+			//TODO: move below into "save method and reuse in 'on blur'"
 			if ($.trim(this.value) == ''){
 				this.value = (this.defaultValue ? this.defaultValue : '');
 			}
