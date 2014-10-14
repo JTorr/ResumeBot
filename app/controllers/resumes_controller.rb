@@ -1,7 +1,27 @@
 class ResumesController < ApplicationController
   def new
-    @master = current_user.resumes.where(master: true).first
-    @resume = current_user.resumes.new
+    if current_user.resumes.where(master: true).empty?
+      redirect_to :welcome
+    else
+      @master = current_user.resumes.where(master: true).first
+      @resume = current_user.resumes.new
+    end
+  end
+
+  def new_master
+    @master = current_user.resumes.new
+  end
+
+  def create_master
+    @master = current_user.resumes.create new_master_params
+    @master.update_attributes(master: true)
+    # binding.pry
+    if @master.save
+      redirect_to master_path, notice: "Successful"
+    else
+      flash[:danger] = "Resume could not be saved."
+      render :new_master
+    end
   end
 
   def create
@@ -9,7 +29,7 @@ class ResumesController < ApplicationController
     @skills = params["skill_ids"].to_a
     @new_atts = @master.attributes.merge(skills: @skills)
     @new_atts.delete(:id, :master)
-    binding.pry
+    # binding.pry
 
     @resume = current_user.resumes.new(@new_atts)
     last_id = Resume.last.id
@@ -33,7 +53,11 @@ class ResumesController < ApplicationController
   end
 
   def show_master
-    @resume = current_user.resumes.where(master: true).first
+    @master = current_user.resumes.where(master: true).first
+    @skills = @master.resume_skills || []
+    unless @master
+      redirect_to welcome_path
+    end
   end
 
   def edit_master
@@ -61,6 +85,10 @@ class ResumesController < ApplicationController
   end
 
     private
+
+    def new_master_params
+      params.permit(:first_name, :last_name, :email, :phone_1, :phone_2, :phone_3, :address, :postal_code, :city, :state)
+    end
 
     def new_resume_params
       params.permit(:email, :phone_1, :phone_2, :phone_3, :address, :postal_code, :city, :state, skills: [])

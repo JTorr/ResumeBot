@@ -15,7 +15,9 @@ Rails.application.routes.draw do
   devise_for :users
   get 'static_pages/home'
   root to: "static_pages#home"
-  get '/resumes/master' => 'resumes#show_master'
+  get 'welcome' => 'resumes#new_master'
+  post 'create_master' => 'resumes#create_master'
+  get '/master' => 'resumes#show_master'
   get '/resumes/master/edit' => 'resumes#edit_master'
   put '/resumes/master/update' => 'resumes#update_master'
   post '/resumes/create' => 'resumes#create'
