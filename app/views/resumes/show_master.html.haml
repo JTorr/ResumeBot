@@ -61,16 +61,11 @@
                     %i.fa.fa-times
               %tr
 
-
-    -# = form_tag new_skill_path, method: :post do
-    -#   %input{:style => "display: none;", :type => "text", :value => "Press enter after update", class: "new-skill"}
-    -#     = button_tag(type: 'submit', class: "btn btn-default add-skill") do
-    -#       Add Skills
-
-.form-search
+.form-inline
   =form_tag skills_create_path, method: :post do
     .well.well-sm
-      =text_field_tag :name, "", :size => "40", :placeholder => "Add New Skill"
+      =text_field_tag :name, "", class: "form-control", :placeholder => "Add New Skill"
+      %br
       %br
       =submit_tag "Add Skill", class: "btn btn-info"
 

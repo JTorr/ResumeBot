@@ -26,24 +26,28 @@ class ResumesController < ApplicationController
 
   def create
     @master = master_resume
-    @skills = params["skill_ids"].to_a
-    @new_atts = @master.attributes.merge(skills: @skills)
-    @new_atts.delete(:id, :master)
-    # binding.pry
-
-    @resume = current_user.resumes.new(@new_atts)
-    last_id = Resume.last.id
-    @resume.update_attributes(id: last_id + 1)
-    # binding.pry
+    skill_ids = params["skill_ids"].to_a
+    @resume = current_user.resumes.new @master.attributes
+    @resume.master = false
+    @resume.id = (Resume.last.id + 1)
     @resume.save
 
     if @resume.save
+      add_resume_skills(skill_ids)
       redirect_to @resume, notice: "Successful"
     else
       flash[:danger] = "Resume could not be saved."
       render :new
     end
   end
+
+  def add_resume_skills(skill_ids)
+    skill_ids.each do |id|
+      @resume.skills << Skill.find(id)
+    end
+  end
+
+
 
   def index
   end
