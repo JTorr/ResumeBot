@@ -1,4 +1,5 @@
 class Experience < ActiveRecord::Base
-  belongs_to :Resume
-  validates_presence_of :name, :Resume_id
+  has_many :resume_experiences
+  has_many :resumes, through: :resume_experiences
+  validates_presence_of :name
 end

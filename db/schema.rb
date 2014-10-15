@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141015053610) do
+ActiveRecord::Schema.define(version: 20141015124829) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,6 +42,16 @@ ActiveRecord::Schema.define(version: 20141015053610) do
   end
 
   add_index "experiences", ["resume_id"], name: "index_experiences_on_resume_id", using: :btree
+
+  create_table "resume_experiences", force: true do |t|
+    t.integer  "resume_id"
+    t.integer  "experience_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "resume_experiences", ["experience_id"], name: "index_resume_experiences_on_experience_id", using: :btree
+  add_index "resume_experiences", ["resume_id"], name: "index_resume_experiences_on_resume_id", using: :btree
 
   create_table "resume_skills", force: true do |t|
     t.integer  "resume_id"
