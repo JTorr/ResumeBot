@@ -50,6 +50,8 @@ class ResumesController < ApplicationController
 
 
   def index
+    resumes = current_user.resumes.all
+    @resumes = resumes.where(master: false)
   end
 
   def show
