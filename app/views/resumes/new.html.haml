@@ -1,10 +1,17 @@
-%h1 Choose Elements to Add to Your Resume
-
-%h3 Skills
-=form_tag resumes_create_path, :method => :post do
-  %ul
-    - for skill in @master.skills
-      %li
-        = check_box_tag "skill_ids[]", skill.id
-        = skill.name
-  = submit_tag "Add to Resume"
+.well.col-lg-12
+  .resumeForm
+    %h1 Create Your Resume
+    %h2 Choose Elements to Add to Resume
+    %br
+    %p.sectionEnd
+    %h3 Skills
+    %br
+    =form_tag resumes_create_path, :method => :post do
+      %ul
+        - for skill in @master.skills
+          %li
+            = check_box_tag "skill_ids[]", skill.id
+            = skill.name
+      %br
+      = button_tag "Add to Resume"
+-# .section_content

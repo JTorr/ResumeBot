@@ -8,6 +8,39 @@
 
 }
 
+.profileInfo {
+  font-family: 'Rokkitt', Helvetica, Arial, sans-serif;
+}
+
+.profileInfo h2 {
+  font-size: 1.7em;
+  text-align: left;
+  font-family: 'Rokkitt', Helvetica, Arial, sans-serif;
+}
+
+.resumeForm h1 {
+  font-size: 2.5em;
+  font-weight: 700;
+  font-family: 'Rokkitt', Helvetica, Arial, sans-serif;
+  text-align: center;
+}
+
+.resumeForm h2 {
+  font-size: 1.7em;
+  text-align: center;
+  font-family: 'Rokkitt', Helvetica, Arial, sans-serif;
+}
+
+.resumeForm h3 {
+  font-size: 1.4em;
+  text-align: left;
+  font-family: 'Rokkitt', Helvetica, Arial, sans-serif;
+}
+
+.sectionEnd {
+  border-bottom: 2px solid #cf8a05;
+}
+
 .left-aside{
   /*background-color: white;*/
   text-align: center;
@@ -24,9 +57,22 @@
   float: right;
 }
 
+.profileInfo h3 {
+  font-size: 1.7em;
+}
+
+.edit {
+  font-size: 1.4em;
+  margin-left: 2em;
+}
+
+.state, .postal_code {
+  margin-left: 0;
+}
 
 
-.contact{
+
+
   /*background-color: gray;*/
 /*}*/
 

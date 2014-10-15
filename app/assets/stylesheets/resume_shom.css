@@ -233,7 +233,7 @@ section:last-child {
     }
 }
 
-@-webkit-keyframes reset {
+/*@-webkit-keyframes reset {
   0% {
     opacity: 0;
   }
@@ -352,4 +352,4 @@ section:last-child {
   -webkit-animation-delay: 0, 2.5s;
   -moz-animation-delay: 0, 2.5s;
   animation-delay: 0, 2.5s;
-}
+}*/

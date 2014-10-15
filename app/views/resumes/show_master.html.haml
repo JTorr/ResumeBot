@@ -1,85 +1,85 @@
 .col-lg-3
 .well.col-lg-12
   .well.col-lg-12
-    %h1.center= @master.first_name + " " + @master.last_name
-
-  .well.col-lg-12
-    %h2 Basic Profile Information
-    %p= "-" * 60
-
-    %h3 Email
-    %p.label.text_label.edit.email= @master.email
-    %input.profile{:style => "display: none;", :type => "text", :value => "Press enter after update"}
-    %br
-
-    %h3 Phone 1
-    %p.label.text_label.edit.phone_1= @master.phone_1
-    %input.profile{:style => "display: none;", :type => "text", :value => "Press enter after update"}
-    %br
-
-    -if @master.phone_2.empty?
-      %button.btn.btn-default.edit Add Phone
-    -else
-      %h3 Phone 2
-      %p.label.text_label.edit.phone_2= @master.phone_2
+    .resumeForm
+      %h1= @master.first_name + " " + @master.last_name
+      %br
+      %p.sectionEnd
+    .well.col-lg-12.profileInfo
+      %h3 Email:
+      %p.label.text_label.edit.email= @master.email
       %input.profile{:style => "display: none;", :type => "text", :value => "Press enter after update"}
-    %br
+      %br
 
-    -if @master.phone_3.empty?
-      %button.btn.btn-default.edit Add Phone
-    -else
-      %h3 Phone 3
-      %p.label.text_label.edit.phone_3= @master.phone_3
+      %h3 Phone 1:
+      %p.label.text_label.edit.phone_1= @master.phone_1
       %input.profile{:style => "display: none;", :type => "text", :value => "Press enter after update"}
+      %br
 
-    %h3 Address
-    %p.label.text_label.edit.address= @master.address
-    %input.profile{:style => "display: none;", :type => "text", :value => "Press enter after update"}
-    %p.label.text_label.edit.city= @master.city
-    %input.profile{:style => "display: none;", :type => "text", :value => "Press enter after update"}
-    %p.label.text_label.edit.state= @master.state
-    %input.profile{:style => "display: none;", :type => "text", :value => "Press enter after update"}
-    %p.label.text_label.edit.postal_code= @master.postal_code
-    %input.profile{:style => "display: none;", :type => "text", :value => "Press enter after update"}
-    %br
+      -if @master.phone_2.empty?
+        %button.btn.btn-default.edit Add Phone
+      -else
+        %h3 Phone 2:
+        %p.label.text_label.edit.phone_2= @master.phone_2
+        %input.profile{:style => "display: none;", :type => "text", :value => "Press enter after update"}
+      %br
+
+      -if @master.phone_3.empty?
+        %button.btn.btn-default.edit Add Phone
+      -else
+        %h3 Phone 3:
+        %p.label.text_label.edit.phone_3= @master.phone_3
+        %input.profile{:style => "display: none;", :type => "text", :value => "Press enter after update"}
+
+      %h3 Address:
+      %p.label.text_label.edit.address= @master.address
+      %input.profile{:style => "display: none;", :type => "text", :value => "Press enter after update"}
+      %p.label.text_label.edit.city= @master.city
+      %input.profile{:style => "display: none;", :type => "text", :value => "Press enter after update"}
+      %p.label.text_label.edit.state= @master.state
+      %input.profile{:style => "display: none;", :type => "text", :value => "Press enter after update"}
+      %p.label.text_label.edit.postal_code= @master.postal_code
+      %input.profile{:style => "display: none;", :type => "text", :value => "Press enter after update"}
+      %br
+      %p.sectionEnd
 
 
 
-  .well.col-lg-12
-    %h2 Skills
-    %p= "-" * 60
-    -unless @skills.empty?
-      %table
-        %tbody
-          -@skills.each do |skill|
-            %tr
-              %td= skill.name
-            %tr
-              %td
-                = form_tag skill_path(skill), method: :delete do
-                  = hidden_field_tag :id, skill.id
-                  = button_tag(type: 'submit', class: "btn btn-danger") do
-                    %i.fa.fa-times
+    .well.col-lg-12.profileInfo
+      %h2 Skills:
+      %p= "-" * 60
+      -unless @skills.empty?
+        %table
+          %tbody
+            -@skills.each do |skill|
               %tr
+                %td= skill.name
+              %tr
+                %td
+                  = form_tag skill_path(skill), method: :delete do
+                    = hidden_field_tag :id, skill.id
+                    = button_tag(type: 'submit', class: "btn btn-danger") do
+                      %i.fa.fa-times
+                %tr
 
-.form-inline
-  =form_tag skills_create_path, method: :post do
-    .well.well-sm
-      =text_field_tag :name, "", class: "form-control", :placeholder => "Add New Skill"
-      %br
-      %br
-      =submit_tag "Add Skill", class: "btn btn-info"
+  .form-inline
+    =form_tag skills_create_path, method: :post do
+      .well.well-sm
+        =text_field_tag :name, "", class: "form-control", :placeholder => "Add New Skill"
+        %br
+        %br
+        =submit_tag "Add Skill", class: "btn btn-info"
 
 
-  -# .well.col-lg-12
-  -#   %h2 Experience
-  -#   %p= "-" * 60
-  -#   -unless @master.experiences.empty?
-  -#     %p= @master.experiences.map { |exp| exp.company_name }
-  -#   %button.btn.btn-default Add Experience
-  -# .well.col-lg-12
-  -#   %h2 Education
-  -#   %p= "-" * 60
-  -#   -unless @master.educations.empty?
-  -#     %p= @master.educations.map { |education| education.institution }
-  -#   %button.btn.btn-default Add Education
+    -# .well.col-lg-12
+    -#   %h2 Experience
+    -#   %p= "-" * 60
+    -#   -unless @master.experiences.empty?
+    -#     %p= @master.experiences.map { |exp| exp.company_name }
+    -#   %button.btn.btn-default Add Experience
+    -# .well.col-lg-12
+    -#   %h2 Education
+    -#   %p= "-" * 60
+    -#   -unless @master.educations.empty?
+    -#     %p= @master.educations.map { |education| education.institution }
+    -#   %button.btn.btn-default Add Education
