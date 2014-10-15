@@ -19,7 +19,7 @@
       %br
       - for experience in @master.experiences
         %p.skill
-          = check_box_tag "experience_ids[]", experience.company_name
+          = check_box_tag "experience_ids[]", experience.id
           = experience.company_name
       %br
       = submit_tag "Add to Resume", class: "btn btn-default"
