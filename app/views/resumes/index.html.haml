@@ -6,6 +6,7 @@
     -@resumes.each do |resume|
       = radio_button :single_use, true, { class: 'btn btn-primary' }, display: 'none'
       = link_to resume.title, resume_path(resume.id)
+
       %p
       %br
     = button_tag "Export HTML", class: "btn btn-default"

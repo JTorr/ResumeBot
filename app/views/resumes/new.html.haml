@@ -4,9 +4,13 @@
     %h2 Choose Elements to Add to Resume
     %br
     %p.sectionEnd
-    =form_tag resumes_create_path, :method => :post do
-      =text_field_tag :title, "", placeholder: "Resume Title", class: "form-control"
+      %h3 Name Your Resume
       %br
+      =form_tag resumes_create_path, :method => :post do
+        =text_field_tag :title, "", placeholder: "Resume Title", class: "form-control"
+        %br
+
+      //Skills
       %h3 Skills
       %br
       - for skill in @master.skills
@@ -15,6 +19,8 @@
           = skill.name
       %br
       %br
+
+      //Experience
       %h3 Experience
       %br
       - for experience in @master.experiences
@@ -23,3 +29,15 @@
           = experience.company_name
       %br
       = submit_tag "Add to Resume", class: "btn btn-default"
+      %br
+      %br
+
+      //Education
+      -# %h3 Education
+      -# %br
+      -# - for education in @master.educations
+      -#   %p.skill
+      -#     = check_box_tag "experience_ids[]", education.id
+      -#     = education.institution
+      -# %br
+      -# = submit_tag "Add to Resume", class: "btn btn-default"
