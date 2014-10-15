@@ -20,8 +20,8 @@
           = link_to "ResumeBot", root_path, class: "navbar-brand"
         %ul.nav.navbar-nav.pull-right
           -if current_user
-            %li= link_to "Master Resume", master_path
-            %li= link_to "New Resume", new_resume_path
+            %li= link_to "Master", master_path
+            %li= link_to "New", new_resume_path
             %li= link_to "My Resumes", resumes_path
           %li.dropdown
             %a.btn-btn-default.dropdown-toggle{id:"dropdownMenu1", "data-toggle"=> 'dropdown'}
@@ -30,6 +30,7 @@
             %ul.dropdown-menu.dropdown-menu-right{role:'menu', 'aria-labelledby'=>"dropdownMenu1"}
               - if current_user
                 / Signed in
+
                 %li= link_to "Edit Account", edit_user_registration_path
                 %li= link_to "Log out", destroy_user_session_path, method: :delete
               - else
