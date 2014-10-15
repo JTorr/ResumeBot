@@ -1,15 +1,15 @@
--# .well.col-lg-12
--#   .resumeForm
--#     %h1 Create Your Resume
--#     %h2 Choose Elements to Add to Resume
--#     %br
--#     %p.sectionEnd
--#     %h3 Skills
--#     %br
--#     =form_tag resumes_create_path, :method => :post do
--#       - for skill in @master.skills
--#         %p.skill
--#           = check_box_tag "skill_ids[]", skill.id
--#           = skill.name
--#       %br
--#       = button_tag "Add to Resume", class: "btn btn-default"
+.well.col-lg-12
+  .resumeForm
+    %h1 My Resumes
+    %br
+    %p.sectionEnd
+    -@resumes.each do |resume|
+      = link_to resume.title, resume_path(resume.id)
+      %p
+      -# =form_tag resumes_create_path, :method => :post do
+      -#   - for skill in @master.skills
+      -#     %p.skill
+      -#       = check_box_tag "skill_ids[]", skill.id
+      -#       = skill.name
+      -#   %br
+      -#   = button_tag "Add to Resume", class: "btn btn-default"
