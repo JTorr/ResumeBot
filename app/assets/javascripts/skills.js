@@ -6,7 +6,7 @@ $(document).ready(function(){
     $(this).prev().prev().prev().select();
   });
 
-  $('input[type="text"]').blur(function() {
+  $('input[type="text"].new_skill').blur(function() {
     if ($.trim(this.value) == ''){
       this.value = (this.defaultValue ? this.defaultValue : '')
     }

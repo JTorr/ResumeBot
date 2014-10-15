@@ -15,6 +15,7 @@ class ResumesController < ApplicationController
   def create_master
     @master = current_user.resumes.create new_master_params
     @master.update_attributes(master: true)
+    @master.update_attributes(title: "Master")
     # binding.pry
     if @master.save
       redirect_to master_path, notice: "Successful"
@@ -94,11 +95,11 @@ class ResumesController < ApplicationController
 
 
     def new_resume_params
-      params.permit(:email, :phone_1, :phone_2, :phone_3, :address, :postal_code, :city, :state, skills: [])
+      params.permit(:title, :email, :phone_1, :phone_2, :phone_3, :address, :postal_code, :city, :state, skills: [])
     end
 
     def resume_params
-      params.permit(skills: :skill_ids)
+      params.permit(skills: :skill_ids, title: :title)
     end
 
 end

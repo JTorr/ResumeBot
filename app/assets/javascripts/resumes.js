@@ -6,7 +6,7 @@ $(document).ready(function(){
 		$(this).next().select();
 	});
 
-	$('input[type="text"]').blur(function() {
+	$('input[type="text"].profile').blur(function() {
 		if ($.trim(this.value) == ''){
 			this.value = (this.defaultValue ? this.defaultValue : '')
 
