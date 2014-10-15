@@ -46,6 +46,7 @@ Rails.application.routes.draw do
 
     # resources :resumes do
       resources :skills
+      resources :experiences
     # end
     # resources :educations
     # resources :experiences

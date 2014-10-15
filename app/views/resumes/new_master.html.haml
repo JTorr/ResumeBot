@@ -1,42 +1,44 @@
-%h1 Create Your Master Resume
-%h3 The Resume is a comprehensive record of your job history, skills and education.
-%h3 Later, you can choose which pieces to include in your resume.
+.well.col-lg-12
+  .resumeForm
+    %h1 Create Your Master Resume
+    %h3 The Resume is a comprehensive record of your job history, skills and education.
+    %h3 Later, you can choose which pieces to include in your resume.
 
-.form_group
-=form_tag create_master_path(params), method: :post do
-  =label_tag :first_name, "First Name"
-  =text_field_tag :first_name
-  %br
-  =label_tag :last_name, "Last Name"
-  =text_field_tag :last_name
-  %br
-  =label_tag :email, "Email"
-  =text_field_tag :email
-  %br
-  =label_tag :phone_1, "Phone 1"
-  =text_field_tag :phone_1
-  %br
-  =label_tag :phone_2, "Phone 2"
-  =text_field_tag :phone_2
-  %br
-  =label_tag :phone_3, "Phone 3"
-  =text_field_tag :phone_3
-  %br
-  =label_tag :address, "Street Address"
-  =text_field_tag :address
-  %br
-  =label_tag :city, "City"
-  =text_field_tag :city
-  %br
-  //TODO: change this to a dropdown
-  =label_tag :state, "State"
-  =text_field_tag :state
-  %br
-  =label_tag :postal_code, "Postal Code"
-  =text_field_tag :postal_code
-  %br
-  =hidden_field_tag :master, true
-  =button_tag(type: 'submit', :class => 'btn btn-default') do
-    Create Resume
+    .form_group
+    =form_tag create_master_path(params), method: :post do
+      =label_tag :first_name, "First Name"
+      =text_field_tag :first_name
+      %br
+      =label_tag :last_name, "Last Name"
+      =text_field_tag :last_name
+      %br
+      =label_tag :email, "Email"
+      =text_field_tag :email
+      %br
+      =label_tag :phone_1, "Phone 1"
+      =text_field_tag :phone_1
+      %br
+      =label_tag :phone_2, "Phone 2"
+      =text_field_tag :phone_2
+      %br
+      =label_tag :phone_3, "Phone 3"
+      =text_field_tag :phone_3
+      %br
+      =label_tag :address, "Street Address"
+      =text_field_tag :address
+      %br
+      =label_tag :city, "City"
+      =text_field_tag :city
+      %br
+      //TODO: change this to a dropdown
+      =label_tag :state, "State"
+      =text_field_tag :state
+      %br
+      =label_tag :postal_code, "Postal Code"
+      =text_field_tag :postal_code
+      %br
+      =hidden_field_tag :master, true
+      =button_tag(type: 'submit', :class => 'btn btn-default') do
+        Create Resume
 
--# =form_for @master do |f|
+    -# =form_for @master do |f|

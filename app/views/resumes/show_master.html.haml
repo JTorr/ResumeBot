@@ -79,9 +79,10 @@
                   = hidden_field_tag :id, exp.id
                   = button_tag(type: 'submit') do
                     %i.fa.fa-times
-              %td.experience= exp.company_name
-              %td.experience= exp.position
-              %td.experience= exp.summary
+              %td.experience
+                %h1= exp.company_name + ', ' + exp.position
+                %p= exp.summary
+
             %tr
 
     .form-inline
