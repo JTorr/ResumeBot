@@ -29,6 +29,7 @@ class ResumesController < ApplicationController
     @master = master_resume
     skill_ids = params["skill_ids"].to_a
     @resume = current_user.resumes.new @master.attributes
+    @resume.title = params["title"]
     @resume.master = false
     @resume.id = (Resume.last.id + 1)
     @resume.save
@@ -62,6 +63,7 @@ class ResumesController < ApplicationController
   def show_master
     @master = master_resume
     @skills = @master.skills || []
+    @experiences = @master.experiences || []
     unless @master
       redirect_to welcome_path
     end

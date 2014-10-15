@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   put '/resumes/master/update' => 'resumes#update_master'
   post '/resumes/create' => 'resumes#create'
   post '/skills/create' => 'skills#create'
+  post '/experiences/create' => 'experiences#create'
 
   # resources :skills do
   #   collection do

@@ -4,6 +4,7 @@
     %br
     %p.sectionEnd
     -@resumes.each do |resume|
+      = radio_button :single_use, true, { class: 'btn btn-primary' }, display: 'none'
       = link_to resume.title, resume_path(resume.id)
       %p
       -# =form_tag resumes_create_path, :method => :post do
@@ -11,5 +12,6 @@
       -#     %p.skill
       -#       = check_box_tag "skill_ids[]", skill.id
       -#       = skill.name
-      -#   %br
-      -#   = button_tag "Add to Resume", class: "btn btn-default"
+      %br
+    = button_tag "Export HTML", class: "btn btn-default"
+    = button_tag "Export PDF", class: "btn btn-default"

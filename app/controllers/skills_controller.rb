@@ -10,7 +10,7 @@ class SkillsController < ApplicationController
     if @skill.save
       # binding.pry
       master_resume.skills << @skill
-      redirect_to :back, notice: "Skill added."
+      redirect_to :back
     else
       flash[:danger] = "Skill could not be saved."
       redirect_to :back

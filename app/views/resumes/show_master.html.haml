@@ -56,23 +56,56 @@
                     = button_tag(type: 'submit') do
                       %i.fa.fa-times
                 %td.skill= skill.name
-              %tr
+                %tr
+    .form-inline
+      =form_tag skills_create_path, method: :post do
+        .well.well-sm
+          =text_field_tag :name, "", class: "form-control", :placeholder => "Add New Skill"
+          %br
+          %br
+          =submit_tag "Add Skill", class: "btn btn-default"
 
-  .form-inline
-    =form_tag skills_create_path, method: :post do
-      .well.well-sm
-        =text_field_tag :name, "", class: "form-control", :placeholder => "Add New Skill"
-        %br
-        %br
-        =submit_tag "Add Skill", class: "btn btn-default"
 
 
-    -# .well.col-lg-12
-    -#   %h2 Experience
-    -#   %p= "-" * 60
-    -#   -unless @master.experiences.empty?
-    -#     %p= @master.experiences.map { |exp| exp.company_name }
-    -#   %button.btn.btn-default Add Experience
+    %h2 Work Experience:
+    %br
+    -unless @experiences.empty?
+      %table
+        %tbody
+          -@experiences.each do |exp|
+            %tr
+              %td.experience_icon
+                = form_tag experience_path(exp), method: :delete do
+                  = hidden_field_tag :id, exp.id
+                  = button_tag(type: 'submit') do
+                    %i.fa.fa-times
+              %td.experience= exp.company_name
+              %td.experience= exp.position
+              %td.experience= exp.summary
+            %tr
+
+    .form-inline
+      =form_tag experiences_create_path, method: :post do
+        .well.well-sm
+          .row
+            =text_field_tag :company_name, "", class: "form-control", :placeholder => "Company Name"
+          .row
+            =text_field_tag :position, "", class: "form-control", :placeholder => "Position"
+          .row
+            =text_area_tag :summary, "", class: "form-control", :placeholder => "Summary"
+          .row
+            %br
+            %h5 Start Date
+            =date_select(:start_date, start_year: 1995, use_month_numbers: false,
+                                    discard_day: true, include_blank: true)
+            %h5 End Date
+            =date_select(:end_date, start_year: 1995, use_month_numbers: false,
+                                    discard_day: true, include_blank: true)
+          %br
+          %br
+            =submit_tag "Add Experience", class: "btn btn-default"
+
+
     -# .well.col-lg-12
     -#   %h2 Education
     -#   %p= "-" * 60

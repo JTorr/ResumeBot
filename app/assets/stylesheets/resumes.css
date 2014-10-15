@@ -47,11 +47,11 @@
   float: left;
 }
 
-.skill{
+.skill, .experience{
   font-size: 1.5em;
 }
 
-.skill_icon {
+.skill_icon, .experience_icon {
   padding-right: 10px;
 }
 
