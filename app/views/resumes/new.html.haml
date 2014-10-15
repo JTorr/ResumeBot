@@ -7,11 +7,9 @@
     %h3 Skills
     %br
     =form_tag resumes_create_path, :method => :post do
-      %ul
-        - for skill in @master.skills
-          %li
-            = check_box_tag "skill_ids[]", skill.id
-            = skill.name
+      - for skill in @master.skills
+        %p.skill
+          = check_box_tag "skill_ids[]", skill.id
+          = skill.name
       %br
-      = button_tag "Add to Resume"
--# .section_content
+      = button_tag "Add to Resume", class: "btn btn-default"

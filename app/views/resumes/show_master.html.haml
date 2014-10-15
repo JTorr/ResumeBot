@@ -43,24 +43,20 @@
       %br
       %p.sectionEnd
 
-
-
-    .well.col-lg-12.profileInfo
       %h2 Skills:
-      %p= "-" * 60
+      %br
       -unless @skills.empty?
         %table
           %tbody
             -@skills.each do |skill|
               %tr
-                %td= skill.name
-              %tr
-                %td
+                %td.skill_icon
                   = form_tag skill_path(skill), method: :delete do
                     = hidden_field_tag :id, skill.id
-                    = button_tag(type: 'submit', class: "btn btn-danger") do
+                    = button_tag(type: 'submit') do
                       %i.fa.fa-times
-                %tr
+                %td.skill= skill.name
+              %tr
 
   .form-inline
     =form_tag skills_create_path, method: :post do
@@ -68,7 +64,7 @@
         =text_field_tag :name, "", class: "form-control", :placeholder => "Add New Skill"
         %br
         %br
-        =submit_tag "Add Skill", class: "btn btn-info"
+        =submit_tag "Add Skill", class: "btn btn-default"
 
 
     -# .well.col-lg-12

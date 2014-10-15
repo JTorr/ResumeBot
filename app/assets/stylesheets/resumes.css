@@ -51,6 +51,9 @@
   font-size: 1.5em;
 }
 
+.skill_icon {
+  padding-right: 10px;
+}
 
 .right-aside{
   text-align: center;
@@ -68,6 +71,11 @@
 
 .state, .postal_code {
   margin-left: 0;
+}
+
+.resumeForm h3 {
+  font-size: 1.7em;
+  text-decoration: underline;
 }
 
 

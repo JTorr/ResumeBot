@@ -1,23 +1,15 @@
 -# .well.col-lg-12
--#   .row
--#     .col-lg-3.left-aside
--#       //TODO: if @resume.phone_2, etc.
--#       %p=@resume.address
--#       %p=@resume.city + ", " + @resume.state + " " + @resume.postal_code.to_s
--#       %p=@resume.email
--#     .col-lg-6
--#       %h1.center= @resume.first_name + " " + @resume.last_name
--#     .col-lg-3.right-side
--#       %p=@resume.phone_1
--#       %p=@resume.phone_2
--#       %p=@resume.phone_3
--#
--#   %p= "-" * 180
--#
--#   .well.col-lg-12
+-#   .resumeForm
+-#     %h1 Create Your Resume
+-#     %h2 Choose Elements to Add to Resume
+-#     %br
+-#     %p.sectionEnd
 -#     %h3 Skills
--#     -unless @resume.skills.empty?
--#       %ul
--#         -@resume.skills.each do |skill|
--#           %li.skill= skill.name
--#       %ul
+-#     %br
+-#     =form_tag resumes_create_path, :method => :post do
+-#       - for skill in @master.skills
+-#         %p.skill
+-#           = check_box_tag "skill_ids[]", skill.id
+-#           = skill.name
+-#       %br
+-#       = button_tag "Add to Resume", class: "btn btn-default"
