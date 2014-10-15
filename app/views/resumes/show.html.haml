@@ -2,7 +2,7 @@
   #cv.instaFade
     .mainDetails
       #headshot.quickFade
-        %img{:alt => "Profile Image", :src => "app/assets/images/robothead.jpg"}/
+        %img= link_to image_tag("robot.jpg", alt: "Robot")
       #name
         %h1.quickFade.delayTwo= @resume.first_name + " " + @resume.last_name
         %h2.quickFade.delayThree Robot Coder Ninja
