@@ -14,4 +14,12 @@
           = check_box_tag "skill_ids[]", skill.id
           = skill.name
       %br
+      %br
+      %h3 Experience
+      %br
+      - for experience in @master.experiences
+        %p.skill
+          = check_box_tag "experience_ids[]", experience.company_name
+          = experience.company_name
+      %br
       = submit_tag "Add to Resume", class: "btn btn-default"

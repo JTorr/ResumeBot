@@ -28,6 +28,7 @@ class ResumesController < ApplicationController
   def create
     @master = master_resume
     skill_ids = params["skill_ids"].to_a
+    experience_ids = params["experience_ids"].to_a
     @resume = current_user.resumes.new @master.attributes
     @resume.title = params["title"]
     @resume.master = false
@@ -36,6 +37,7 @@ class ResumesController < ApplicationController
 
     if @resume.save
       add_resume_skills(skill_ids)
+      add_resume_experiences(experience_ids)
       redirect_to @resume, notice: "Successful"
     else
       flash[:danger] = "Resume could not be saved."
@@ -46,6 +48,12 @@ class ResumesController < ApplicationController
   def add_resume_skills(skill_ids)
     skill_ids.each do |id|
       @resume.skills << Skill.find(id)
+    end
+  end
+
+  def add_resume_experiences(experience_ids)
+    experience_ids.each do |id|
+      @resume.experiences << Experience.find(id)
     end
   end
 
