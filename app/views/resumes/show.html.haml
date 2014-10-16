@@ -13,7 +13,7 @@
             %a{:href => @resume.email, :target => "_blank"}=@resume.email
           %li
             w:
-            %a{:href => "http://www.bloggs.com"} RobotCoderNinja.com
+            %a{:href => "http://www.theironyard.com"} RobotCoderNinja.com
           %li= "m: " + @resume.phone_1
           %li= @resume.address
           %li= @resume.city.to_s + ", " + @resume.state.to_s + @resume.postal_code.to_s
@@ -30,18 +30,13 @@
         .sectionTitle
           %h1 Work Experience
         .sectionContent
-          %article
-            %h2 Writer at ResumeBot
-            %p.subDetails One Week Ago - Present
-            %p Stress Driven Development
-          %article
-            %h2 Student at The Iron Yard
-            %p.subDetails Three Months Ago - Present
-            %p Fought JaQuery and Won
-          %article
-            %h2 Bank Manager at Bank of Evil
-            %p.subDetails July 2009 - July 2014
-            %p Muhaha
+          -unless @resume.experiences.empty?
+            -@resume.experiences.each do |exp|
+              %article
+                %h2= exp.company_name
+                %p.subDetails Jan 2099 - Jan 2099
+                %p= exp.summary
+              %article
         .clear
       -unless @resume.skills.empty?
         %section

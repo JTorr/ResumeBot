@@ -9,8 +9,6 @@
       =form_tag resumes_create_path(params), method: :post do
         =label_tag :first_name, "Resume Name"
         = text_field_tag :title, "", placeholder: "Resume Title", class: "form-control"
-        =button_tag(type: 'submit', :class => 'btn btn-default') do
-          Create Resume
 
         //Skills
         %h3 Skills
