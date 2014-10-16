@@ -11,13 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141015181050) do
+ActiveRecord::Schema.define(version: 20141016203225) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "educations", force: true do |t|
-    t.integer  "resume_id"
     t.string   "institution"
     t.string   "area"
     t.string   "study_type"
@@ -28,8 +27,6 @@ ActiveRecord::Schema.define(version: 20141015181050) do
     t.datetime "updated_at"
   end
 
-  add_index "educations", ["resume_id"], name: "index_educations_on_resume_id", using: :btree
-
   create_table "experiences", force: true do |t|
     t.string   "company_name"
     t.string   "position"
@@ -39,6 +36,16 @@ ActiveRecord::Schema.define(version: 20141015181050) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "resume_educations", force: true do |t|
+    t.integer  "resume_id"
+    t.integer  "education_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "resume_educations", ["education_id"], name: "index_resume_educations_on_education_id", using: :btree
+  add_index "resume_educations", ["resume_id"], name: "index_resume_educations_on_resume_id", using: :btree
 
   create_table "resume_experiences", force: true do |t|
     t.integer  "resume_id"

@@ -1,4 +1,5 @@
 class Education < ActiveRecord::Base
-  validates_presence_of :Resume_id, :institution
-  belongs_to :Resume
+  has_many :resume_educations
+  has_many :resumes, through: :resume_educations
+  validates_presence_of :institution
 end

@@ -9,7 +9,7 @@
       =form_tag resumes_create_path(params), method: :post do
         =label_tag :first_name, "Resume Name"
         = text_field_tag :title, "", placeholder: "Resume Title", class: "form-control"
-
+        %br
         //Skills
         %h3 Skills
         %br
@@ -28,16 +28,15 @@
             = check_box_tag "experience_ids[]", experience.id
             = experience.company_name
         %br
-          =button_tag(type: 'submit', :class => 'btn btn-default') do
-            Create Resume
-        %br
 
         //Education
-        -# %h3 Education
-        -# %br
-        -# - for education in @master.educations
-        -#   %p.skill
-        -#     = check_box_tag "experience_ids[]", education.id
-        -#     = education.institution
-        -# %br
-        -# = submit_tag "Add to Resume", class: "btn btn-default"
+        %h3 Education
+        %br
+        - for education in @master.educations
+          %p.skill
+            = check_box_tag "experience_ids[]", education.id
+            = education.institution
+        %br
+        %br
+          =button_tag(type: 'submit', :class => 'btn btn-default') do
+            Create Resume
