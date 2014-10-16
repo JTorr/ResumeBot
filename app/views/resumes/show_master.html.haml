@@ -40,7 +40,7 @@
       %input.profile{:style => "display: none;", :type => "text", :value => "Press enter after update"}
       %p.label.text_label.edit.postal_code= @master.postal_code
       %input.profile{:style => "display: none;", :type => "text", :value => "Press enter after update"}
-      %br
+      %p
       %p.sectionEnd
 
       %h2 Skills:
@@ -64,6 +64,8 @@
           %br
           %br
           =submit_tag "Add Skill", class: "btn btn-default"
+          %p
+          %p.sectionEnd
 
 
 
@@ -105,11 +107,35 @@
           %br
           %br
             =submit_tag "Add Experience", class: "btn btn-default"
+          %p
+          %p.sectionEnd
 
 
-    -# .well.col-lg-12
-    -#   %h2 Education
-    -#   %p= "-" * 60
-    -#   -unless @master.educations.empty?
-    -#     %p= @master.educations.map { |education| education.institution }
-    -#   %button.btn.btn-default Add Education
+    .form-inline
+      =form_tag educations_create_path, method: :post do
+        .well.well-sm
+          .row
+            =text_field_tag :institution, "", class: "form-control", :placeholder => "Institution"
+          .row
+            =text_field_tag :area, "", class: "form-control", :placeholder => "Area of Study"
+          .row
+            =text_field_tag :study_type, "", class: "form-control", :placeholder => "Degree / Study Type"
+          .row
+            =text_field_tag :gpa, "", class: "form-control", :placeholder => "GPA"
+          .row
+            %br
+            %h5 Start Date
+            =date_select(:start_date, start_year: 1995, use_month_numbers: false,
+                                    discard_day: true, include_blank: true)
+            %h5 End Date
+            =date_select(:end_date, start_year: 1995, use_month_numbers: false,
+                                    discard_day: true, include_blank: true)
+          %br
+          %br
+            =submit_tag "Add Education", class: "btn btn-default"
+          %p
+          %p.sectionEnd
+  .resumeForm
+    %h2
+      Ready to Create a Resume?
+      =link_to "New Resume", new_resume_path

@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   post '/resumes/create' => 'resumes#create'
   post '/skills/create' => 'skills#create'
   post '/experiences/create' => 'experiences#create'
+  post '/educations/create' => 'experiences#create'
 
   # resources :skills do
   #   collection do
@@ -43,13 +44,10 @@ Rails.application.routes.draw do
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
     resources :resumes
+    resources :skills
+    resources :experiences
+    resources :educations
 
-    # resources :resumes do
-      resources :skills
-      resources :experiences
-    # end
-    # resources :educations
-    # resources :experiences
 
   # Example resource route with options:
   #   resources :products do
