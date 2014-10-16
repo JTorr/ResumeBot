@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   post '/resumes/create' => 'resumes#create'
   post '/skills/create' => 'skills#create'
   post '/experiences/create' => 'experiences#create'
-  post '/educations/create' => 'experiences#create'
+  post '/educations/create' => 'educations#create'
 
   # resources :skills do
   #   collection do

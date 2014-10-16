@@ -34,7 +34,7 @@
             -@resume.experiences.each do |exp|
               %article
                 %h2= exp.company_name
-                %p.subDetails Jan 2099 - Jan 2099
+                %p.subDetails= exp.position
                 %p= exp.summary
               %article
         .clear
@@ -52,14 +52,13 @@
           .sectionTitle
             %h1 Education
           .sectionContent
-            %article
-              %h2 The Iron Yard
-              %p.subDetails Qualification
-              %p Learned some code.
-            %article
-              %h2 Georgia State University
-              %p.subDetails Qualification
-              %p Learned some much less useful stuff.
+            -@resume.educations.each do |ed|
+              %article
+                %h2= ed.institution
+                %p.subDetails= ed.area
+                %p= ed.study_type
+              %article
+
           .clear
   :javascript
     var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");

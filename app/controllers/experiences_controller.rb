@@ -18,7 +18,7 @@ class ExperiencesController < ApplicationController
 
   def destroy
     @experience = Experience.find(params[:id])
-    @skill.destroy
+    @experience.destroy
     redirect_to :back
   end
 

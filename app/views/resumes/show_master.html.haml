@@ -110,6 +110,23 @@
           %p
           %p.sectionEnd
 
+    %h3 Education:
+    %br
+    -unless @educations.empty?
+      %table
+        %tbody
+          -@educations.each do |ed|
+            %tr
+              %td.experience_icon
+                = form_tag education_path(ed), method: :delete do
+                  = hidden_field_tag :id, ed.id
+                  = button_tag(type: 'submit') do
+                    %i.fa.fa-times
+              %td.experience
+                %h1= ed.institution + ', ' + ed.area
+                %p= ed.study_type
+
+            %tr
 
     .form-inline
       =form_tag educations_create_path, method: :post do

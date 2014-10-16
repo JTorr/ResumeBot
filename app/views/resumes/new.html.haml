@@ -26,7 +26,7 @@
         - for experience in @master.experiences
           %p.skill
             = check_box_tag "experience_ids[]", experience.id
-            = experience.company_name
+            = experience.company_name + ",  " + experience.position
         %br
 
         //Education
@@ -34,7 +34,7 @@
         %br
         - for education in @master.educations
           %p.skill
-            = check_box_tag "experience_ids[]", education.id
+            = check_box_tag "education_ids[]", education.id
             = education.institution
         %br
         %br

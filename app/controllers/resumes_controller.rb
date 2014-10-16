@@ -17,7 +17,7 @@ class ResumesController < ApplicationController
     @master.update_attributes(master: true)
     @master.title = "Master"
     @master.save!
-    # binding.pry
+
     if @master.save
       redirect_to master_path, notice: "Successful"
     else
@@ -28,6 +28,7 @@ class ResumesController < ApplicationController
 
   def create
     @master = master_resume
+    education_ids = params["education_ids"].to_a
     skill_ids = params["skill_ids"].to_a
     experience_ids = params["experience_ids"].to_a
     @resume = current_user.resumes.new @master.attributes
@@ -40,6 +41,7 @@ class ResumesController < ApplicationController
     if @resume.save
       add_resume_skills(skill_ids)
       add_resume_experiences(experience_ids)
+      add_resume_educations(education_ids)
       redirect_to @resume, notice: "Successful"
     else
       flash[:danger] = "Resume could not be saved."
@@ -59,6 +61,11 @@ class ResumesController < ApplicationController
     end
   end
 
+  def add_resume_educations(education_ids)
+    education_ids.each do |id|
+      @resume.educations << Education.find(id)
+    end
+  end
 
 
   def index
@@ -74,6 +81,7 @@ class ResumesController < ApplicationController
     @master = master_resume
     @skills = @master.skills || []
     @experiences = @master.experiences || []
+    @educations = @master.educations || []
     unless @master
       redirect_to welcome_path
     end
