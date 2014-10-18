@@ -79,8 +79,8 @@ class ResumesController < ApplicationController
     respond_to do |format|
       format.html
       format.pdf do
-        pdf = Prawn::Document.new
-        send_data pdf.render, filename: 'resume.pdf', type: 'application/pdf'
+        pdf = ResumePdf.new(@resume)
+        send_data pdf.render, filename: "'#{@resume.title}'.pdf", type: 'application/pdf', disposition: "inline"
       end
     end
   end
