@@ -1,4 +1,5 @@
 class Resume < ActiveRecord::Base
+  include Prawn::View
   belongs_to :user
   has_many :resume_educations
   has_many :educations, through: :resume_educations
