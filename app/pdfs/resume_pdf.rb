@@ -1,21 +1,23 @@
 class ResumePdf < Prawn::Document
   def initialize(resume)
     super()
+    @y_position = cursor - 10
     @resume = resume
     header
+    profile
+    employment
     text_content
     # table_content
   end
 
   def header
-    y_position = cursor - 10
 
-    bounding_box([20, y_position], :width => 270, :height => 300) do
+    bounding_box([20, @y_position], :width => 270, :height => 300) do
       text "#{@resume.first_name}" + " " + "#{@resume.last_name}", size: 30, style: :bold
       text "Robot Coder Ninja", size: 20
     end
 
-    bounding_box([260, y_position], :width => 270, :height => 300) do
+    bounding_box([260, @y_position], :width => 270, :height => 80) do
       text "e: #{@resume.email}", size: 10, align: :right
       text "w: RobotCoderNinja.com", size: 10, align: :right
       text "m: #{@resume.phone_1}", size: 10, align: :right
@@ -25,16 +27,53 @@ class ResumePdf < Prawn::Document
 
   stroke_color "ff0000"
   stroke do
-     # just lower the current y position
-    #  move_down 10
      horizontal_rule
-    #  vertical_line 100, 300, :at => 50
-    #  horizontal_line 200, 500, :at => 150
   end
 
+  def profile
+    move_down 10
+    bounding_box([20, @y_position - 100], :width => 270, :height => 20) do
+      text "Personal Profile", size: 18, align: :left
+    end
 
+    bounding_box([150, @y_position - 105], :width => 270, :height => 20) do
+      text "Instant Robot Coder Ninja! Just add coffee.", size:12, align: :right
+    end
 
+    stroke_color "ff0000"
+      stroke do
+         horizontal_rule
+      end
+    end
   end
+
+  def employment
+    move_down 10
+    bounding_box([20, @y_position - 140], :width => 270, :height => 180) do
+      text "Work", size:18, align: :left
+      text "Experience", size:18, align: :left
+    end
+
+    count = 0
+    exp = @resume.experiences.each do |exp|
+      count += 1
+      y = @y_position - 55 - (count * 90)
+      bounding_box([240, y], :width => 270, :height => 180) do
+        # binding.pry
+        text "#{exp.company_name}", size: 18, align: :left
+        text "#{exp.position}", size: 14, align: :left, style: :italic
+        text "#{exp.summary}", size: 14, align: :left
+      end
+      move_up 100
+    end
+
+    # stroke_color "ff0000"
+      stroke do
+         horizontal_rule
+      end
+    end
+  # end
+
 
   def text_content
     # The cursor for inserting content starts on the top left of the page. Here we move it down a little to create more space between the text and the image inserted above
