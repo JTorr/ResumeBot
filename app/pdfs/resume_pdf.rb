@@ -7,7 +7,7 @@ class ResumePdf < Prawn::Document
     profile
     employment
     skills
-    # table_content
+    education
   end
 
   def header
@@ -76,7 +76,7 @@ class ResumePdf < Prawn::Document
   def skills
     move_down 10
     bounding_box([20, @y1 - 100], :width => 270, :height => 180) do
-      text "Skills", size:18, align: :left
+      text "Key Skills", size:18, align: :left
     end
 
     count = 0
@@ -93,6 +93,7 @@ class ResumePdf < Prawn::Document
         text "#{skill.name}", size: 14, align: :left
       end
       move_up 100
+      @c = cursor
     end
 
     # stroke_color "ff0000"
@@ -101,24 +102,25 @@ class ResumePdf < Prawn::Document
       end
     end
 
-  # end
+    def education
+      move_down 10
+      bounding_box([20, @c - 10], :width => 270, :height => 180) do
+        text "Education", size:18, align: :left
+      end
 
-  # def table_content
-  #   # This makes a call to product_rows and gets back an array of data that will populate the columns and rows of a table
-  #   # I then included some styling to include a header and make its text bold. I made the row background colors alternate between grey and white
-  #   # Then I set the table column widths
-  #   table resume_rows do
-  #     row(0).font_style = :bold
-  #     self.header = true
-  #     self.row_colors = ['DDDDDD', 'FFFFFF']
-  #     self.column_widths = [40, 300, 200]
-  #   end
-  # end
-  #
-  # def resume_rows
-  #   [['#', 'Name', 'Price']] +
-  #     @products.map do |product|
-  #     [product.id, product.name, product.price]
-  #   end
-  # end
+      count = 0
+      ed = @resume.educations.each do |ed|
+        count += 1
+        @y3 = @c + 70 - (count * 90)
+        bounding_box([180, @y3], :width => 270, :height => 180) do
+          text "#{ed.institution}", size: 18, align: :left
+          text "#{ed.area}", size: 14, align: :left, style: :italic
+          text "#{ed.study_type}", size: 14, align: :left
+        end
+        move_up 100
+      end
+
+      end
+
+
 end
