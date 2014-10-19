@@ -2,12 +2,23 @@ class ResumePdf < Prawn::Document
   def initialize(resume)
     super()
     @y_position = cursor - 10
+    @y1 = cursor - 50
+    @c = @y1 -400
     @resume = resume
     header
     profile
-    employment
-    skills
-    education
+
+    unless @resume.experiences.empty?
+      employment
+    end
+    # binding.pry
+    unless @resume.skills.count == 0
+      skills
+    end
+
+    unless @resume.educations.empty?
+      education
+    end
   end
 
   def header
@@ -56,15 +67,15 @@ class ResumePdf < Prawn::Document
 
     count = 0
     exp = @resume.experiences.each do |exp|
-      count += 1
-      @y1 = @y_position - 55 - (count * 90)
-      bounding_box([180, @y1], :width => 270, :height => 180) do
-        # binding.pry
-        text "#{exp.company_name}", size: 18, align: :left
-        text "#{exp.position}", size: 14, align: :left, style: :italic
-        text "#{exp.summary}", size: 14, align: :left
-      end
-      move_up 100
+        count += 1
+        @y1 = @y_position - 55 - (count * 90)
+        bounding_box([180, @y1], :width => 270, :height => 180) do
+          # binding.pry
+          text "#{exp.company_name}", size: 18, align: :left
+          text "#{exp.position}", size: 14, align: :left, style: :italic
+          text "#{exp.summary}", size: 14, align: :left
+        end
+        move_up 100
     end
 
     # stroke_color "ff0000"
