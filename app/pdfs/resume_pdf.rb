@@ -83,7 +83,12 @@ class ResumePdf < Prawn::Document
     exp = @resume.skills.each do |skill|
       count += 1
       @y2 = @y1 - 55 - (count * 20)
-      bounding_box([180, @y2 - 30], :width => 270, :height => 180) do
+      float do
+        bounding_box [170, @y2 - 30], :width => 10 do
+          text "•"
+        end
+      end
+      bounding_box([180, @y2 - 30], :width => 270, :height => 140) do
         # binding.pry
         text "#{skill.name}", size: 14, align: :left
       end
