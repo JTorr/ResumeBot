@@ -80,7 +80,7 @@ class ResumesController < ApplicationController
       format.html
       format.pdf do
         pdf = ResumePdf.new(@resume)
-        send_data pdf.render, filename: "'#{@resume.title}'.pdf", type: 'application/pdf', disposition: "inline"
+        send_data pdf.render, filename: "'#{@resume.title}'.pdf", type: "application/pdf"
       end
     end
   end

@@ -98,7 +98,12 @@ slogan h3 {
   text-align: right;
 }
 
-
+#pdf {
+  font-size: 1.2em;
+  background-color: white;
+  font-style: bold;
+  margin-left: 0px;
+}
   /*background-color: gray;*/
 /*}*/
 
