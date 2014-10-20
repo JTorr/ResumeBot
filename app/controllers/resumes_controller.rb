@@ -69,11 +69,13 @@ class ResumesController < ApplicationController
 
 
   def index
+    # raise "Index"
     resumes = current_user.resumes.all
     @resumes = resumes.where(master: false)
   end
 
   def show
+    # raise "Show"
     @resume = current_user.resumes.find(params[:id])
 
     respond_to do |format|

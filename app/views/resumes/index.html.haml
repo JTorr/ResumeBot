@@ -4,10 +4,27 @@
     %br
     %p.sectionEnd
     -@resumes.each do |resume|
-      = radio_button :single_use, true, { class: 'btn btn-primary' }, display: 'none'
-      = link_to resume.title, resume_path(resume.id)
+      = radio_button("get", :resume_id, "#{resume.id}")
+      = label_tag(:resume_id, "#{resume.title}")
+      -# =resume.title
+      -# -binding.pry
+
 
       %p
       %br
-    = button_tag "Export HTML", class: "btn btn-default"
-    = button_tag "Export PDF", class: "btn btn-default"
+    = button_to "Export PDF", [:resumes, params[:resume_id] ] , remote: true, form: { "data-type" => "pdf", "method" => "get" }, class: "btn btn-default"
+
+-# = resume.title
+-# -binding.pry
+-# %input{:name => :id, :type => "radio", :value => "#{resume.id}"}
+
+-# = link_to resume.title, resume_path(resume.id)
+-# = radio_button_tag :single_use, true, { class: 'btn btn-primary' }, display: 'none'
+-# = link_to resume.title, resume_path(resume.id)
+
+-# = button_tag "Export HTML", class: "btn btn-default"
+-# = button_tag "Export PDF", class: "btn btn-default"
+-# button_to "Create", { action: "create" }, remote: true, form: { "data-type" => "json" }
+-# <%= button_to [:make_happy, @user] do %>
+-# Make happy <strong><%= @user.name %></strong>
+-# <% end %>
