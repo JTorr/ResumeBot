@@ -7,8 +7,8 @@ $(document).ready(function(){
   });
 
   $('input[type="text"].new_skill').blur(function() {
-    if ($.trim(this.value) == ''){
-      this.value = (this.defaultValue ? this.defaultValue : '')
+    if ($.trim(this.value) === ''){
+      this.value = (this.defaultValue ? this.defaultValue : '');
     }
 
     console.log($(this));
@@ -19,7 +19,7 @@ $(document).ready(function(){
 
 
   $('input[type="text"].new_skill').keypress(function(event) {
-    if (event.keyCode == '13') {
+    if (event.keyCode === '13') {
       $(this).prev().html(this.value);
       console.log($(this));
       $.ajax('/skills/new', {
