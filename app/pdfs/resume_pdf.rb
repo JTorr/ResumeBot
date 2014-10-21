@@ -10,6 +10,14 @@ class ResumePdf < Prawn::Document
     sections
   end
 
+  def body_text(string)
+    text "#{string}", size: 10, align: :right
+  end
+
+  def other_text(string, size = 10, align = :left, style = :normal)
+    text "#{string}", size: size, align: align, style: style
+  end
+
   def sections
     #TODO: refactor to check each method, then run non-empty methods
     unless @resume.experiences.empty?
@@ -35,16 +43,16 @@ class ResumePdf < Prawn::Document
   def header
 
     bounding_box([20, @y_position], :width => 270, :height => 300) do
-      text "#{@resume.first_name}" + " " + "#{@resume.last_name}", size: 30, style: :bold
-      text "Robot Coder Ninja", size: 20
+      other_text("#{@resume.first_name}" + " " + "#{@resume.last_name}", 30, :left, :bold)
+      other_text("Robot Coder Ninja", 20)
     end
 
     bounding_box([260, @y_position], :width => 270, :height => 80) do
-      text "e: #{@resume.email}", size: 10, align: :right
-      text "w: RobotCoderNinja.com", size: 10, align: :right
-      text "m: #{@resume.phone_1}", size: 10, align: :right
-      text "#{@resume.address}", size: 10, align: :right
-      text "#{@resume.city}" + ", " + "#{@resume.state}" + "#{@resume.postal_code}", size:10, align: :right
+      body_text("e: #{@resume.email}")
+      body_text("w: RobotCoderNinja.com")
+      body_text("m: #{@resume.phone_1}")
+      body_text("#{@resume.address}")
+      body_text("#{@resume.city}" + ", " + "#{@resume.state}" + "#{@resume.postal_code}")
     end
     underline
   end
@@ -52,11 +60,11 @@ class ResumePdf < Prawn::Document
   def profile
     move_down 10
     bounding_box([20, @y_position - 100], :width => 270, :height => 20) do
-      text "Personal Profile", size: 18, align: :left
+      other_text("Personal Profile", 18, :left)
     end
 
     bounding_box([150, @y_position - 105], :width => 270, :height => 20) do
-      text "Instant Robot Coder Ninja! Just add coffee.", size:12, align: :right
+      other_text("Instant Robot Coder Ninja! Just add coffee.", 12, :right)
     end
     underline
   end
@@ -64,8 +72,8 @@ class ResumePdf < Prawn::Document
   def employment
     move_down 10
     bounding_box([20, @y_position - 140], :width => 270, :height => 180) do
-      text "Work", size:18, align: :left
-      text "Experience", size:18, align: :left
+      other_text("Work", 18, :left)
+      other_text("Experience", 18, :left)
     end
 
     count = 0
@@ -74,18 +82,19 @@ class ResumePdf < Prawn::Document
       @y1 = @y_position - 55 - (count * 90)
 
       bounding_box([180, @y1], :width => 270, :height => 180) do
-        text "#{exp.company_name}", size: 18, align: :left
-        text "#{exp.position}", size: 14, align: :left, style: :italic
-        text "#{exp.summary}", size: 14, align: :left
+        other_text("#{exp.company_name}", 18, :left)
+        other_text("#{exp.position}", 14, :left, :italic)
+        other_text("#{exp.summary}", 14, :left)
       end
     end
     move_up 100
+    underline
   end
 
   def skills
     move_down 10
     bounding_box([20, @y1 - 100], :width => 270, :height => 180) do
-      text "Key Skills", size:18, align: :left
+      other_text("Key Skills", 18, :left)
     end
 
     count = 0
