@@ -104,6 +104,16 @@ slogan h3 {
   font-style: bold;
   margin-left: 0px;
 }
+
+.link {
+  margin-left: 10px;
+}
+
+.title {
+  font-size: 2.0em;
+  font-weight: 500;
+  font-style: bold;
+}
   /*background-color: gray;*/
 /*}*/
 
