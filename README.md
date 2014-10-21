@@ -1,8 +1,5 @@
 [![Code Climate](https://codeclimate.com/github/JTorr/ResumeBot/badges/gpa.svg)](https://codeclimate.com/github/JTorr/ResumeBot)
 
-WORK IN PROGRESS: PLEASE WEAR HARDHAT IN THIS CONSTRUCTION ZONE
-======
-
 ResumeBot README
 ======
 
