@@ -4,8 +4,6 @@
     %br
     %p.sectionEnd
     -@resumes.each do |resume|
-      -# = radio_button("get", :resume_id, "#{resume.id}")
-      -# = label_tag(:resume_id, "#{resume.title}")
       =resume.title
       = link_to "View", resume_path(resume.id), class: "link"
       = link_to "Download PDF", resume_path(resume.id, format: :pdf), class: "lin"

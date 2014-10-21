@@ -75,7 +75,6 @@ class ResumesController < ApplicationController
   end
 
   def show
-    # raise "Show"
     @resume = current_user.resumes.find(params[:id])
 
     respond_to do |format|
