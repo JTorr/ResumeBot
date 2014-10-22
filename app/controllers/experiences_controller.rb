@@ -1,4 +1,5 @@
 class ExperiencesController < ApplicationController
+  before_action :authenticate_user!
   def new
     @master = master_resume
     @experience = @master.experiences.new

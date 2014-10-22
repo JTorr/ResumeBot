@@ -1,4 +1,5 @@
 class ResumesController < ApplicationController
+  before_action :authenticate_user!
   def new
     if current_user.resumes.where(master: true).empty?
       redirect_to :welcome

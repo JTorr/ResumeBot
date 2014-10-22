@@ -1,4 +1,5 @@
 class EducationsController < ApplicationController
+  before_action :authenticate_user!
   def new
     @master = master_resume
     @education = @master.educations.new

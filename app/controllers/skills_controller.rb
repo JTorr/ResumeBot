@@ -1,4 +1,5 @@
 class SkillsController < ApplicationController
+  before_action :authenticate_user!
   def new
     @master = master_resume
     @skill = @master.skills.new
