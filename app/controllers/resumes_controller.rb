@@ -87,11 +87,12 @@ class ResumesController < ApplicationController
   end
 
   def show_master
-    @master = master_resume
-    @skills = @master.skills || []
-    @experiences = @master.experiences || []
-    @educations = @master.educations || []
-    unless @master
+    unless current_user.resumes.empty?
+      @master = master_resume
+      @skills = @master.skills || []
+      @experiences = @master.experiences || []
+      @educations = @master.educations || []
+    else
       redirect_to welcome_path
     end
   end
