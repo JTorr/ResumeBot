@@ -1,5 +1,4 @@
 class StaticPagesController < ApplicationController
-  before_action :authenticate_user!
   def home
     if current_user && (current_user.resumes.count > 0)
       # flash[:success] = "Welcome"
