@@ -24,6 +24,7 @@ gem "json_resume"
 gem 'jquery-ui-rails'
 gem 'cb-api', '0.1.2'
 gem 'prawn'
+gem 'newrelic_rpm'
 
 
 group :production do

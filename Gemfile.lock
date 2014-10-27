@@ -118,6 +118,7 @@ GEM
     multi_xml (0.5.5)
     mustache (0.99.6)
     netrc (0.7.7)
+    newrelic_rpm (3.9.6.257)
     nokogiri (1.6.3.1)
       mini_portile (= 0.6.0)
     orm_adapter (0.5.0)
@@ -263,6 +264,7 @@ DEPENDENCIES
   jquery-ui-rails
   json_resume
   launchy
+  newrelic_rpm
   pg
   pg_search
   prawn
