@@ -1,3 +1,4 @@
+<div class="well">
 <div class="row">
   <div class="span6">
     <h3><%=  @job.title %></h3>
@@ -5,9 +6,8 @@
 </div>
 <div class="row">
   <div class="span6">
-    <%=  @job.company_name if @job.company_image_url.blank?%>
-    <%= link_to image_tag(@job.company_image_url), :controller => :company, :action => :details, :did => @job.company_did unless @job.company_image_url.blank? %>
-  </div>
+    <%=  @job.company_name %>
+    </div>
 </div>
 
 <div><br></div>
@@ -30,4 +30,5 @@
 <div class="row">
   <div class="span2">Requirements</div>
   <div class="span6"><%= CGI.unescapeHTML(@job.requirements).html_safe%></div>
+</div>
 </div>

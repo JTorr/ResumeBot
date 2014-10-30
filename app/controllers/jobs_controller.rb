@@ -6,6 +6,7 @@ class JobsController < ApplicationController
 
   def details
     @job = Cb.job.find_by_did params[:did]
+    @company = Cb.company.find_by_did params[:did]
   end
 
   def show
