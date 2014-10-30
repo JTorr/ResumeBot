@@ -1,4 +1,8 @@
-<tr>
-  <td><%= link_to job.title, :action => :details, :did => job.did%></td>
-  <td><%= job.location%></td>
-</tr>
+<div class="jobs">
+  <tr>
+    <!-- <div class="well"> -->
+      <td><%= link_to job.title, :action => :details, :did => job.did%></td>
+      <td><%= job.location%></td>
+    <!-- </div> -->
+  </tr>
+</div>
