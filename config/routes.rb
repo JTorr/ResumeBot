@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  match "jobs", :to=>"jobs#search", :via=> [:get, :post], :as=> :job_search
+  match "jobs/:did", :to=>"jobs#details#:did", :via=> :get, :as=> :job_details
+
 
   get 'jobs/index'
 

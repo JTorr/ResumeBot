@@ -1,4 +1,5 @@
 Rails.application.configure do
+  require 'cb'
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
@@ -75,4 +76,9 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  Cb.configure do |config|
+    config.dev_key    = 'WDHT25L77VDQCML8QQZT'
+    config.time_out   = 5
+  end
 end

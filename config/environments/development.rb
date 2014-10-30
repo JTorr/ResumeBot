@@ -1,4 +1,5 @@
 Rails.application.configure do
+  require 'Cb'
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded on
@@ -33,6 +34,11 @@ Rails.application.configure do
   # Checks for improperly declared sprockets dependencies.
   # Raises helpful error messages.
   config.assets.raise_runtime_errors = true
+
+  Cb.configure do |config|
+    config.dev_key    = 'WDHT25L77VDQCML8QQZT'
+    config.time_out   = 5
+  end
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true

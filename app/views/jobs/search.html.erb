@@ -1,0 +1,17 @@
+<%unless @results.nil? || @results.count == 0%>
+    <%=  "Errors: #{debug @results.cb_response.errors} <p><p>" unless @results.cb_response.errors.nil?%>
+
+    <table class="table table-striped">
+        <tr>
+            <th>Title</th>
+            <th>Company</th>
+            <th>Location</th>
+        <tr>
+
+        <%@results.each do | job |%>
+            <%= render :partial => 'search_result', :locals => {:job => job} %>
+        <%end%>
+    </table>
+<%else%>
+    <div>No jobs found. Try broadening your search.</div>
+<%end%>

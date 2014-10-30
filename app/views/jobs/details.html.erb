@@ -1,0 +1,33 @@
+<div class="row">
+  <div class="span6">
+    <h3><%=  @job.title %></h3>
+  </div>
+</div>
+<div class="row">
+  <div class="span6">
+    <%=  @job.company_name if @job.company_image_url.blank?%>
+    <%= link_to image_tag(@job.company_image_url), :controller => :company, :action => :details, :did => @job.company_did unless @job.company_image_url.blank? %>
+  </div>
+</div>
+
+<div><br></div>
+
+<div class="row">
+    <div class="span2">Location</div>
+    <div class="span6"><%=  @job.location_formatted %></div>
+</div>
+
+<div class="row">
+  <div class="span2">Type</div>
+  <div class="span6"><%=  @job.employment_type %></div>
+</div>
+
+<div class="row">
+  <div class="span2">Description</div>
+  <div class="span6"><%= CGI.unescapeHTML(@job.description).html_safe%></div>
+</div>
+
+<div class="row">
+  <div class="span2">Requirements</div>
+  <div class="span6"><%= CGI.unescapeHTML(@job.requirements).html_safe%></div>
+</div>

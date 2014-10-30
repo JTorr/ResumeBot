@@ -1,4 +1,5 @@
 Rails.application.configure do
+  require 'cb'
   # Settings specified here will take precedence over those in config/application.rb.
 
   # The test environment is used exclusively to run your application's
@@ -36,4 +37,9 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+
+  Cb.configure do |config|
+    config.dev_key    = 'WDHT25L77VDQCML8QQZT'
+    config.time_out   = 5
+  end
 end
