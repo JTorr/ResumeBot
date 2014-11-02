@@ -1,9 +1,10 @@
-<div class="center hero-unit">
+<div class="well">
+  <h2 class= "profileInfo"> Job Search By Keyword </h2>
   <div class="form-search">
     <%= form_tag job_search_path, method: :get do %>
-      <%= label_tag :qry %>
+      <%= label_tag "Keyword Search" %>
       <%= text_field_tag :qry %>
-      <%= submit_tag "Find Job", class: "btn btn-danger" %>
+      <%= submit_tag "Search", class: "btn btn-danger" %>
     <% end %>
   </div>
 </div>
