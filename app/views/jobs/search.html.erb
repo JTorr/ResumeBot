@@ -1,3 +1,14 @@
+<div class="center hero-unit">
+  <div class="form-search">
+    <%= form_tag job_search_path, method: :get do %>
+      <%= label_tag :qry %>
+      <%= text_field_tag :qry %>
+      <%= submit_tag "Find Job", class: "btn btn-danger" %>
+    <% end %>
+  </div>
+</div>
+
+
 <%unless @results.nil? || @results.count == 0%>
     <%=  "Errors: #{debug @results.cb_response.errors} <p><p>" unless @results.cb_response.errors.nil?%>
 
